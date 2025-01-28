@@ -137,7 +137,7 @@ class AdminContent(ttk.Frame):
         ttk.Label(save_frame, text="minutes").pack(side="left", padx=5)
         ttk.Button(save_frame, text="Backup Now").pack(side="left", padx=2)
         ttk.Button(save_frame, text="Restore...").pack(side="left")
-
+        
     def create_motd_section(self, parent):
         section = ttk.LabelFrame(parent, text="Message of the Day", padding="5")
         section.pack(fill="x", padx=5, pady=5)
@@ -146,8 +146,18 @@ class AdminContent(ttk.Frame):
         motd_frame.pack(fill="x")
         ttk.Label(motd_frame, text="Lines: 0").pack(side="left")
         ttk.Label(motd_frame, text="Length: 0").pack(side="left", padx=20)
-
-    # Previous methods remain the same
+        
+        # Add text box
+        text_frame = ttk.Frame(section)
+        text_frame.pack(fill="both", expand=True, pady=5)
+        
+        self.motd_text = tk.Text(text_frame, height=4, wrap="word")
+        self.motd_text.pack(fill="both", expand=True)
+        
+        # Add scrollbar
+        scrollbar = ttk.Scrollbar(text_frame, orient="vertical", command=self.motd_text.yview)
+        scrollbar.pack(side="right", fill="y")
+        self.motd_text.configure(yscrollcommand=scrollbar.set)
 
     def create_server_options_section(self, parent):
         section = ttk.LabelFrame(parent, text="Server Options", padding="5")
@@ -324,11 +334,11 @@ class AdminContent(ttk.Frame):
         ttk.Entry(server_frame).pack(side="left", fill="x", expand=True, padx=5)
         ttk.Button(server_frame, text="Show Command...").pack(side="left")
         
-        def main():
-            root = tk.Tk()
-            app = AdminContent(root)  # Note: AdminContent, not AdminPanel
-            app.pack(fill="both", expand=True)
-            root.mainloop()
+    def main():
+        root = tk.Tk()
+        app = AdminContent(root)  # Note: AdminContent, not AdminPanel
+        app.pack(fill="both", expand=True)
+        root.mainloop()
 
-        if __name__ == "__main__":
-            main()
+    if __name__ == "__main__":
+        main()
