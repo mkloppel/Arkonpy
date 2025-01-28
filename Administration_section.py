@@ -9,20 +9,20 @@ class AdminContent(ttk.Frame, ScrollableFrameMixin):
         
     def create_frames(self):
         # Create main scrollable container
-        canvas = tk.Canvas(self)
-        scrollbar = ttk.Scrollbar(self, orient="vertical", command=canvas.yview)
-        scrollable_frame = ttk.Frame(canvas)
+        self.canvas = tk.Canvas(self)
+        scrollbar = ttk.Scrollbar(self, orient="vertical", command=self.canvas.yview)
+        scrollable_frame = ttk.Frame(self.canvas)
         
         scrollable_frame.bind(
             "<Configure>",
-            lambda e: canvas.configure(scrollregion=canvas.bbox("all"))
+            lambda e: self.canvas.configure(scrollregion=self.canvas.bbox("all"))
         )
         
-        canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
-        canvas.configure(yscrollcommand=scrollbar.set)
+        self.canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
+        self.canvas.configure(yscrollcommand=scrollbar.set)
         
         # Add scroll functionality from the mixin
-        self.add_scroll_functionality(canvas)
+        self.add_scroll_functionality(self.canvas)
         
         # Create all sections
         self.create_name_passwords_section(scrollable_frame)
@@ -36,7 +36,7 @@ class AdminContent(ttk.Frame, ScrollableFrameMixin):
         self.create_command_line_section(scrollable_frame)
         
         # Pack the scrollable elements
-        canvas.pack(side="left", fill="both", expand=True)
+        self.canvas.pack(side="left", fill="both", expand=True)
         scrollbar.pack(side="right", fill="y")
             
     def create_name_passwords_section(self, parent):
