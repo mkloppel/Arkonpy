@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 
-class AdminContent(ttk.Frame):
+class AdminContent(ttk.Frame, ScrollableFrameMixin):
     def __init__(self, parent):
         super().__init__(parent)
         self.create_frames()
@@ -19,6 +19,9 @@ class AdminContent(ttk.Frame):
         
         canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
         canvas.configure(yscrollcommand=scrollbar.set)
+        
+        # Add scroll functionality from the mixin
+        self.add_scroll_functionality(canvas)
         
         # Create all sections
         self.create_name_passwords_section(scrollable_frame)
