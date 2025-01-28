@@ -147,12 +147,6 @@ class AdminContent(ttk.Frame):
         ttk.Label(motd_frame, text="Lines: 0").pack(side="left")
         ttk.Label(motd_frame, text="Length: 0").pack(side="left", padx=20)
 
-        # Add new sections
-        self.create_server_options_section(scrollable_frame)
-        self.create_server_log_section(scrollable_frame)
-        self.create_branch_details_section(scrollable_frame)
-        self.create_command_line_section(scrollable_frame)
-
     # Previous methods remain the same
 
     def create_server_options_section(self, parent):
