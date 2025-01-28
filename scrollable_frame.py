@@ -6,5 +6,10 @@ class ScrollableFrameMixin:
         x, y = canvas.winfo_pointerxy()
         widget_under_mouse = canvas.winfo_containing(x, y)
         
-        if widget_under_mouse and (canvas is widget_under_mouse or canvas in widget_under_mouse.winfo_parents()):
-            canvas.yview_scroll(int(-1*(event.delta/120)), "units")
+        # Check if widget_under_mouse is the canvas or a child of it
+        parent = widget_under_mouse
+        while parent:
+            if parent == canvas:
+                canvas.yview_scroll(int(-1*(event.delta/120)), "units")
+                break
+            parent = parent.master if hasattr(parent, 'master') else None
