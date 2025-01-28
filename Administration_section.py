@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-from Main import ScrollableFrameMixin
+from scrollable_frame import ScrollableFrameMixin
 
 class AdminContent(ttk.Frame, ScrollableFrameMixin):
     def __init__(self, parent):
@@ -338,11 +338,11 @@ class AdminContent(ttk.Frame, ScrollableFrameMixin):
         ttk.Entry(server_frame).pack(side="left", fill="x", expand=True, padx=5)
         ttk.Button(server_frame, text="Show Command...").pack(side="left")
         
-    def main():
-        root = tk.Tk()
-        app = AdminContent(root)  # Note: AdminContent, not AdminPanel
-        app.pack(fill="both", expand=True)
-        root.mainloop()
+def main():
+    root = tk.Tk()
+    app = AdminContent(root)  # Note: AdminContent, not AdminPanel
+    app.pack(fill="both", expand=True)
+    root.mainloop()
 
-    if __name__ == "__main__":
-        main()
+if __name__ == "__main__":
+    main()
