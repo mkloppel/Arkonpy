@@ -3,7 +3,6 @@ from tkinter import ttk
 from Administration_section import AdminContent
 from Auto_managment import AutomaticManagement
 from Rules import RulesContent
-from Rules import RulesContent
 
 class AdminPanel:
     def __init__(self, root):
