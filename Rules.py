@@ -10,16 +10,29 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
         self.variables = {}
         self.slider_values = {}
         self.create_frames()
+
+    def create_frames(self):
+        # Create main scrollable container
+        self.canvas = tk.Canvas(self)
+        scrollbar = ttk.Scrollbar(self, orient="vertical", command=self.canvas.yview)
+        self.scrollable_frame = ttk.Frame(self.canvas)
         
-        # Initialize variables
-        self.variables = {}
-        self.slider_values = {}
+        self.scrollable_frame.bind(
+            "<Configure>",
+            lambda e: self.canvas.configure(scrollregion=self.canvas.bbox("all"))
+        )
         
-        # Create all sections in order
+        self.canvas.create_window((0, 0), window=self.scrollable_frame, anchor="nw")
+        self.canvas.configure(yscrollcommand=scrollbar.set)
+        
+        # Add scroll functionality
+        self.add_scroll_functionality(self.canvas)
+        
+        # Create all sections
         self.create_general_rules()
         self.create_downloads_section()
         self.create_tribute_section()
-        self.create_cluster_section()
+        self.create_cluster_section() 
         self.create_pve_schedule_section()
         self.create_tribe_settings_section()
         self.create_tribe_warfare_section()
@@ -28,37 +41,6 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
         self.create_cryopod_section()
         self.create_genesis_sections()
         self.create_hexagons_section()
-
-    def create_frames(self):
-        # Create main scrollable container
-        self.canvas = tk.Canvas(self)
-        scrollbar = ttk.Scrollbar(self, orient="vertical", command=self.canvas.yview)
-        scrollable_frame = ttk.Frame(self.canvas)
-        
-        scrollable_frame.bind(
-            "<Configure>",
-            lambda e: self.canvas.configure(scrollregion=self.canvas.bbox("all"))
-        )
-        
-        self.canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
-        self.canvas.configure(yscrollcommand=scrollbar.set)
-        
-        # Add scroll functionality
-        self.add_scroll_functionality(self.canvas)
-        
-        # Create all sections
-        self.create_general_rules(scrollable_frame)
-        self.create_downloads_section(scrollable_frame)
-        self.create_tribute_section(scrollable_frame)
-        self.create_cluster_section(scrollable_frame)
-        self.create_pve_schedule_section(scrollable_frame)
-        self.create_tribe_settings_section(scrollable_frame)
-        self.create_tribe_warfare_section(scrollable_frame)
-        self.create_disease_network_section(scrollable_frame)
-        self.create_game_mechanics_section(scrollable_frame)
-        self.create_cryopod_section(scrollable_frame)
-        self.create_genesis_sections(scrollable_frame)
-        self.create_hexagons_section(scrollable_frame)
         
         # Pack the scrollable elements
         self.canvas.pack(side="left", fill="both", expand=True)
