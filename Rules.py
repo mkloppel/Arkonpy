@@ -166,31 +166,24 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
         for i, text in enumerate(right_checkboxes):
             self.create_labeled_checkbox(frame, text, i, 2)
             
-    def create_tribute_section(self, parent):
-        section = ttk.LabelFrame(parent, text="Tribute Options", padding="5")
-        section.pack(fill="x", padx=5, pady=5)
-        
-        # Upload restrictions frame
-        upload_frame = ttk.Frame(section)
-        upload_frame.pack(fill="x", pady=2)
+    def create_tribute_section(self):
+        frame = ttk.LabelFrame(self.scrollable_frame, text="Tribute Options")
+        frame.grid(row=2, column=0, sticky='nsew', padx=5, pady=5)
+        frame.grid_columnconfigure(1, weight=1)
         
         # Upload restriction checkboxes
-        upload_options = [
+        checkboxes = [
             "No Survivor Uploads",
             "No Item Uploads",
             "No Dino Uploads"
         ]
         
-        for option in upload_options:
-            ttk.Checkbutton(upload_frame, text=option).pack(anchor="w", pady=1)
-        
-        # Limits frame
-        limits_frame = ttk.Frame(section)
-        limits_frame.pack(fill="x", pady=5)
+        for i, text in enumerate(checkboxes):
+            self.create_labeled_checkbox(frame, text, i, 0)
         
         # Max Tribute settings
-        self.create_slider_with_entry(limits_frame, "Max Tribute Dinos", 50, "dinos")
-        self.create_slider_with_entry(limits_frame, "Max Tribute Items", 50, "items")
+        self.create_slider_with_entry(frame, "Max Tribute Dinos", 50, 3, "dinos", False)
+        self.create_slider_with_entry(frame, "Max Tribute Items", 50, 4, "items", False)
         
     def create_cluster_options_section(self, parent):
         section = ttk.LabelFrame(parent, text="Cluster Tribute Options", padding="5")
