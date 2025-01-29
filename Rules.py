@@ -111,19 +111,13 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
         entry.grid(row=row, column=column + 1, padx=5, pady=2)
         return entry
     
-    def create_general_rules(self, parent):
-        section = ttk.LabelFrame(parent, text="General Rules", padding="5")
-        section.pack(fill="x", padx=5, pady=5)
+    def create_general_rules(self):
+        frame = ttk.LabelFrame(self.scrollable_frame, text="General Rules")
+        frame.grid(row=0, column=0, sticky='nsew', padx=5, pady=5)
+        frame.grid_columnconfigure(1, weight=1)
         
-        # Basic game mode settings frame
-        mode_frame = ttk.Frame(section)
-        mode_frame.pack(fill="x", pady=2)
-        
-        # First column of checkboxes
-        left_frame = ttk.Frame(mode_frame)
-        left_frame.pack(side="left", fill="x", expand=True)
-        
-        basic_settings = [
+        # Left column checkboxes
+        left_checkboxes = [
             "Enable Hardcore Mode",
             "Enable PvP",
             "Disable PvE Friendly Fire",
@@ -135,39 +129,34 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
             "Random Supply Crate Points"
         ]
         
-        for option in basic_settings:
-            ttk.Checkbutton(left_frame, text=option).pack(anchor="w", pady=1)
+        # Right column checkboxes
+        right_checkboxes = [
+            "Use Corpse Locator",
+            "Allow Platform Saddle Multi Floors",
+            "Enable Difficulty Override",
+            "Disable Non-Meat Fish Loot"
+        ]
         
-        # Resource and loot settings frame
-        loot_frame = ttk.Frame(section)
-        loot_frame.pack(fill="x", pady=5)
+        # Create left column
+        for i, text in enumerate(left_checkboxes):
+            self.create_labeled_checkbox(frame, text, i, 0)
+            
+        # Create right column
+        for i, text in enumerate(right_checkboxes):
+            self.create_labeled_checkbox(frame, text, i, 2)
+            
+        # Create sliders
+        slider_configs = [
+            ("Supply Crate Loot Quality Multiplier", 1.0, "x", True),
+            ("Fishing Loot Quality Multiplier", 1.0, "x", True),
+            ("Platform Saddle Build Area Bounds Multiplier", 1.0, "x", True),
+            ("Max Gateways on Saddles", 2, "", False),
+            ("Max Dino Level", 120, "levels", False),
+            ("Difficulty Offset", 1.0, "", True)
+        ]
         
-        # Supply Crate Multiplier
-        self.create_slider_with_entry(loot_frame, "Supply Crate Loot Quality Multiplier", 1, "x")
-        
-        # Additional checkboxes
-        ttk.Checkbutton(loot_frame, text="Disable Non-Meat Fish Loot").pack(anchor="w", pady=1)
-        
-        # Fishing Multiplier
-        self.create_slider_with_entry(loot_frame, "Fishing Loot Quality Multiplier", 1, "x")
-        
-        # Platform and building settings frame
-        platform_frame = ttk.Frame(section)
-        platform_frame.pack(fill="x", pady=5)
-        
-        ttk.Checkbutton(platform_frame, text="Use Corpse Locator").pack(anchor="w", pady=1)
-        ttk.Checkbutton(platform_frame, text="Allow Platform Saddle Multi Floors").pack(anchor="w", pady=1)
-        
-        self.create_slider_with_entry(platform_frame, "Platform Saddle Build Area Bounds Multiplier", 1, "x")
-        self.create_slider_with_entry(platform_frame, "Max Gateways on Saddles", 2, "")
-        
-        # Difficulty settings frame
-        difficulty_frame = ttk.Frame(section)
-        difficulty_frame.pack(fill="x", pady=5)
-        
-        ttk.Checkbutton(difficulty_frame, text="Enable Difficulty Override").pack(anchor="w", pady=1)
-        self.create_slider_with_entry(difficulty_frame, "Max Dino Level", 120, "levels")
-        self.create_slider_with_entry(difficulty_frame, "Difficulty Offset", 1, "")
+        for i, (text, default, unit, is_float) in enumerate(slider_configs):
+            self.create_slider_with_entry(frame, text, default, i + len(left_checkboxes), unit, is_float)
 
     def create_downloads_section(self):
         frame = ttk.LabelFrame(self.scrollable_frame, text="Downloads")
