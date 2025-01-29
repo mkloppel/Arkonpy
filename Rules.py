@@ -138,38 +138,6 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
         self.create_slider_with_entry(frame, "Effectiveness Multiplier", 1, 3, "x", True)
         self.create_slider_with_entry(frame, "Skill Multiplier", 1, 4, "x", True)
 
-    # Add remaining section methods following the same pattern...
-    def create_general_rules(self):
-        frame = ttk.LabelFrame(self.scrollable_frame, text="General Rules")
-        frame.grid(row=0, column=0, sticky='nsew', padx=5, pady=5)
-        frame.grid_columnconfigure(1, weight=1)
-        
-        # Left column checkboxes
-        left_checkboxes = [
-            "Enable PvP",
-            "Allow Cave Building",
-            "Allow Flyer Carry",
-            "Allow Multiple Floor Platforms",
-            "Enable Extra Structure Prevention Volumes"
-        ]
-        
-        # Right column checkboxes
-        right_checkboxes = [
-            "Allow Raid Dino Feeding",
-            "Prevent Diseases",
-            "Prevent Tribute Downloads",
-            "No Survivor Downloads",
-            "Enable Extra Dino Spawns"
-        ]
-        
-        # Create left column
-        for i, text in enumerate(left_checkboxes):
-            self.create_labeled_checkbox(frame, text, i, 0)
-            
-        # Create right column
-        for i, text in enumerate(right_checkboxes):
-            self.create_labeled_checkbox(frame, text, i, 2)
-
     def create_disease_network_section(self):
         frame = ttk.LabelFrame(self.scrollable_frame, text="Disease and Network Settings")
         frame.grid(row=7, column=0, sticky='nsew', padx=5, pady=5)
@@ -340,15 +308,15 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
         for i, stat in enumerate(right_stats):
             create_stat_clamp(frame, stat, i + 1, 2)
 
-def main():
-    root = tk.Tk()
-    app = RulesContent(root)  # Note: AdminContent, not AdminPanel
-    app.pack(fill="both", expand=True)
-    root.mainloop()
-            
-if __name__ == "__main__":
-    root = tk.Tk()
-    root.geometry("800x600")
-    app = RulesContent(root)
-    app.pack(fill="both", expand=True)
-    root.mainloop()
+        def main():
+            root = tk.Tk()
+            app = RulesContent(root)
+            app.pack(fill="both", expand=True)
+            root.mainloop()
+                    
+        if __name__ == "__main__":
+            root = tk.Tk()
+            root.geometry("800x600")
+            app = RulesContent(root)
+            app.pack(fill="both", expand=True)
+            root.mainloop()

@@ -1,7 +1,8 @@
 import tkinter as tk
 from tkinter import ttk
+from scrollable_frame import ScrollableFrameMixin
 
-class AutomaticManagement(ttk.Frame):
+class AutomaticManagement(ttk.Frame, ScrollableFrameMixin):
     def __init__(self, parent):
         super().__init__(parent)
         self.create_frames()
