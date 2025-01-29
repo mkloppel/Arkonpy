@@ -236,7 +236,7 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
         for i, (text, default, unit, is_float) in enumerate(sliders_config):
             self.create_slider_with_entry(frame, text, default, i + 2, unit, is_float)
 
-def create_item_stat_clamps_section(self):
+    def create_item_stat_clamps_section(self):
         frame = ttk.LabelFrame(self.scrollable_frame, text="Item Stat Clamps")
         frame.grid(row=13, column=0, sticky='nsew', padx=5, pady=5)
         frame.grid_columnconfigure(1, weight=1)
@@ -309,19 +309,18 @@ def create_item_stat_clamps_section(self):
         for i, stat in enumerate(right_stats):
             create_stat_clamp(frame, stat, i + 1, 2)
 
-        def main():
-            root = tk.Tk()
-            app = RulesContent(root)  # Note: AdminContent, not AdminPanel
-            app.pack(fill="both", expand=True)
-            root.mainloop()
-                    
-        if __name__ == "__main__":
-            root = tk.Tk()
-            root.geometry("800x600")
-            app = RulesContent(root)
-            app.pack(fill="both", expand=True)
-            root.mainloop()
-    def create_general_rules(self):
+def main():
+    root = tk.Tk()
+    app = RulesContent(root)  # Note: AdminContent, not AdminPanel
+    app.pack(fill="both", expand=True)
+    root.mainloop()
+            
+if __name__ == "__main__":
+    root = tk.Tk()
+    root.geometry("800x600")
+    app = RulesContent(root)
+    app.pack(fill="both", expand=True)
+    root.mainloop()
         frame = ttk.LabelFrame(self.scrollable_frame, text="General Rules")
         frame.grid(row=0, column=0, sticky='nsew', padx=5, pady=5)
         frame.grid_columnconfigure(1, weight=1)
