@@ -192,64 +192,39 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
         slider_frame2.grid(row=4, column=0, columnspan=3, sticky='ew', padx=5, pady=2)
         self.create_slider_with_entry(slider_frame2, "Max Tribute Items", 50, "items", False)
         
-    def create_cluster_options_section(self, parent):
-        section = ttk.LabelFrame(parent, text="Cluster Tribute Options", padding="5")
-        section.pack(fill="x", padx=5, pady=5)
+    def create_cluster_options_section(self):
+        frame = ttk.LabelFrame(self.scrollable_frame, text="Cluster Tribute Options")
+        frame.grid(row=3, column=0, sticky='nsew', padx=5, pady=5)
+        frame.grid_columnconfigure(1, weight=1)
         
-        # Transfer settings frame
-        transfer_frame = ttk.Frame(section)
-        transfer_frame.pack(fill="x", pady=2)
-        
-        ttk.Checkbutton(transfer_frame, text="No Transfer from Filtering").pack(anchor="w", pady=1)
-        
-        # Upload expiration settings frame
-        expiration_frame = ttk.Frame(section)
-        expiration_frame.pack(fill="x", pady=5)
-        
-        expiration_settings = [
-            ("Override Survivor Upload Expiration", 1440, "minutes"),
-            ("Override Item Upload Expiration", 1440, "minutes"),
-            ("Override Dino Upload Expiration", 1440, "minutes"),
-            ("Override Minimum Dino Re-upload Interval", 720, "minutes")
+        # Checkboxes
+        checkboxes = [
+            "No Transfer from Filtering",
+            "Increase PvP Respawn Interval",
+            "Prevent Offline PvP",
+            "PvE Schedule"
         ]
         
-        for text, value, unit in expiration_settings:
-            self.create_slider_with_entry(expiration_frame, text, value, unit)
+        for i, text in enumerate(checkboxes):
+            self.create_labeled_checkbox(frame, text, i, 0)
         
-        # PvP settings frame
-        pvp_frame = ttk.Frame(section)
-        pvp_frame.pack(fill="x", pady=5)
-        
-        ttk.Checkbutton(pvp_frame, text="Increase PvP Respawn Interval").pack(anchor="w", pady=1)
-        
-        interval_settings = [
-            ("Interval Check Period", 300, "seconds"),
-            ("Interval Multiplier", 1, ""),  # Float type
-            ("Interval Base Amount", 60, "seconds")
+        # Sliders
+        slider_configs = [
+            ("Override Survivor Upload Expiration", 1440, "minutes", False),
+            ("Override Item Upload Expiration", 1440, "minutes", False),
+            ("Override Dino Upload Expiration", 1440, "minutes", False),
+            ("Override Minimum Dino Re-upload Interval", 720, "minutes", False),
+            ("Interval Check Period", 300, "seconds", False),
+            ("Interval Multiplier", 1.0, "", True),
+            ("Interval Base Amount", 60, "seconds", False),
+            ("Logout Interval", 900, "seconds", False),
+            ("Connection Invincible Interval", 5, "seconds", False)
         ]
         
-        for text, value, unit in interval_settings:
-            self.create_slider_with_entry(pvp_frame, text, value, unit)
-        
-        # Offline protection frame
-        offline_frame = ttk.Frame(section)
-        offline_frame.pack(fill="x", pady=5)
-        
-        ttk.Checkbutton(offline_frame, text="Prevent Offline PvP").pack(anchor="w", pady=1)
-        
-        protection_settings = [
-            ("Logout Interval", 900, "seconds"),
-            ("Connection Invincible Interval", 5, "seconds")
-        ]
-        
-        for text, value, unit in protection_settings:
-            self.create_slider_with_entry(offline_frame, text, value, unit)
-        
-        # Schedule frame
-        schedule_frame = ttk.Frame(section)
-        schedule_frame.pack(fill="x", pady=2)
-        
-        ttk.Checkbutton(schedule_frame, text="PvE Schedule").pack(anchor="w", pady=1)
+        for i, (text, default, unit, is_float) in enumerate(slider_configs):
+            slider_frame = ttk.Frame(frame)
+            slider_frame.grid(row=i + len(checkboxes), column=0, columnspan=3, sticky='ew', padx=5, pady=2)
+            self.create_slider_with_entry(slider_frame, text, default, unit, is_float)
         
 
     def create_pve_schedule_section(self):
