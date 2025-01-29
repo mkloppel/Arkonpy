@@ -41,9 +41,12 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
         self.create_genesis_sections()
         self.create_hexagons_section()
         
-        # Pack the scrollable elements
-        self.canvas.pack(side="left", fill="both", expand=True)
-        scrollbar.pack(side="right", fill="y")
+        # Grid layout for canvas and scrollbar
+        self.canvas.grid(row=0, column=0, sticky="nsew")
+        scrollbar.grid(row=0, column=1, sticky="ns")
+
+        self.grid_rowconfigure(0, weight=1)
+        self.grid_columnconfigure(0, weight=1)
 
     def create_labeled_checkbox(self, parent, text, row, column, columnspan=1):
         var = tk.BooleanVar()
@@ -54,24 +57,25 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
 
     def create_slider_with_entry(self, parent, text, default_value, unit="", float_type=True):
         frame = ttk.Frame(parent)
-        frame.pack(fill="x", pady=2)
-        
+        frame.grid(sticky="ew", pady=2)
+        frame.grid_columnconfigure(1, weight=1)
+
         label = ttk.Label(frame, text=text)
-        label.pack(side="left", padx=5)
-        
+        label.grid(row=0, column=0, padx=5, sticky='w')
+
         slider_var = tk.DoubleVar(value=float(default_value))
         slider = ttk.Scale(frame, from_=0, to=100 if float_type else 1000,
                          variable=slider_var, orient='horizontal')
-        slider.pack(side="left", fill="x", expand=True, padx=5)
-        
+        slider.grid(row=0, column=1, padx=5, sticky='ew')
+
         entry_var = tk.StringVar(value=str(default_value))
         entry = ttk.Entry(frame, textvariable=entry_var, width=10)
-        entry.pack(side="left", padx=5)
-        
+        entry.grid(row=0, column=2, padx=5)
+
         if unit:
             unit_label = ttk.Label(frame, text=unit)
-            unit_label.pack(side="left", padx=5)
-        
+            unit_label.grid(row=0, column=3, padx=5, sticky='w')
+
         self.slider_values[text] = (slider_var, entry_var)
         return frame, slider, entry
 
@@ -257,7 +261,7 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
             slider_frame = ttk.Frame(frame)
             slider_frame.grid(row=i + 1, column=0, columnspan=3, sticky='ew', padx=5, pady=2)
             self.create_slider_with_entry(slider_frame, text, default, unit, is_float)
-
+    
     def create_tribe_warfare_section(self):
         frame = ttk.LabelFrame(self.scrollable_frame, text='PvE "Tribe Warfare" Options')
         frame.grid(row=6, column=0, sticky='nsew', padx=5, pady=5)
@@ -279,7 +283,7 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
         slider_frame2 = ttk.Frame(frame)
         slider_frame2.grid(row=4, column=0, columnspan=3, sticky='ew', padx=5, pady=2)
         self.create_slider_with_entry(slider_frame2, "Skill Multiplier", 1, "x", True)
-
+    
     def create_disease_network_section(self):
         frame = ttk.LabelFrame(self.scrollable_frame, text="Disease and Network Settings")
         frame.grid(row=7, column=0, sticky='nsew', padx=5, pady=5)
@@ -383,7 +387,9 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
         ]
         
         for i, (text, default, unit, is_float) in enumerate(sliders_config):
-            self.create_slider_with_entry(frame, text, default, unit, is_float)
+            slider_frame = ttk.Frame(frame)
+            slider_frame.grid(row=i + 2, column=0, columnspan=3, sticky='ew', padx=5, pady=2)
+            self.create_slider_with_entry(slider_frame, text, default, unit, is_float)
 
     def create_item_stat_clamps_section(self):
         frame = ttk.LabelFrame(self.scrollable_frame, text="Item Stat Clamps")
@@ -404,7 +410,7 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
             justify='left',
             font=('TkDefaultFont', 10, 'bold')
         )
-        warning_label.pack(fill='x', padx=5, pady=5)
+        warning_label.grid(row=0, column=0, sticky='w', padx=5, pady=5)
         
         # Left column stat clamps
         left_stats = [
@@ -430,22 +436,22 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
             cb.grid(row=row, column=base_column, padx=(5, 0), pady=2)
             
             # Slider and Entry combination
-            frame = ttk.Frame(parent)
-            frame.grid(row=row, column=base_column + 1, sticky='ew', padx=5, pady=2)
-            frame.grid_columnconfigure(0, weight=1)
+            clamp_frame = ttk.Frame(parent)
+            clamp_frame.grid(row=row, column=base_column + 1, sticky='ew', padx=5, pady=2)
+            clamp_frame.grid_columnconfigure(1, weight=1)
             
             # Label
-            label = ttk.Label(frame, text=text)
+            label = ttk.Label(clamp_frame, text=text)
             label.grid(row=0, column=0, sticky='w', padx=(0, 5))
             
             # Slider
             slider_var = tk.DoubleVar(value=0)
-            slider = ttk.Scale(frame, from_=0, to=100, variable=slider_var, orient='horizontal')
+            slider = ttk.Scale(clamp_frame, from_=0, to=100, variable=slider_var, orient='horizontal')
             slider.grid(row=0, column=1, sticky='ew', padx=5)
             
             # Entry
             entry_var = tk.StringVar(value="0")
-            entry = ttk.Entry(frame, textvariable=entry_var, width=10)
+            entry = ttk.Entry(clamp_frame, textvariable=entry_var, width=10)
             entry.grid(row=0, column=2, padx=(5, 0))
             
             self.slider_values[text] = (slider_var, entry_var)
@@ -458,9 +464,9 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
         for i, stat in enumerate(right_stats):
             create_stat_clamp(frame, stat, i + 1, 2)
 
-        if __name__ == "__main__":
-            root = tk.Tk()
-            root.geometry("800x600")
-            app = RulesContent(root)
-            app.pack(fill="both", expand=True)
-            root.mainloop()
+    if __name__ == "__main__":
+        root = tk.Tk()
+        root.geometry("800x600")
+        app = RulesContent(root)
+        app.pack(fill="both", expand=True)
+        root.mainloop()
