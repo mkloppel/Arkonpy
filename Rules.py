@@ -6,25 +6,10 @@ from scrollable_frame import ScrollableFrameMixin
 class RulesContent(ttk.Frame, ScrollableFrameMixin):
     def __init__(self, parent):
         super().__init__(parent)
+        # Initialize variables
+        self.variables = {}
+        self.slider_values = {}
         self.create_frames()
-        
-        # Previous initialization code remains the same
-        self.main_frame = ttk.Frame(root)
-        self.main_frame.pack(fill=tk.BOTH, expand=True)
-        
-        self.canvas = tk.Canvas(self.main_frame)
-        self.scrollbar = ttk.Scrollbar(self.main_frame, orient="vertical", command=self.canvas.yview)
-        self.canvas.configure(yscrollcommand=self.scrollbar.set)
-        
-        self.scrollable_frame = ttk.Frame(self.canvas)
-        self.scrollable_frame.bind(
-            "<Configure>",
-            lambda e: self.canvas.configure(scrollregion=self.canvas.bbox("all"))
-        )
-        
-        self.scrollbar.pack(side="right", fill="y")
-        self.canvas.pack(side="left", fill="both", expand=True)
-        self.canvas.create_window((0, 0), window=self.scrollable_frame, anchor="nw")
         
         # Initialize variables
         self.variables = {}
@@ -44,7 +29,40 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
         self.create_genesis_sections()
         self.create_hexagons_section()
 
-    # Previous helper methods remain the same
+    def create_frames(self):
+        # Create main scrollable container
+        self.canvas = tk.Canvas(self)
+        scrollbar = ttk.Scrollbar(self, orient="vertical", command=self.canvas.yview)
+        scrollable_frame = ttk.Frame(self.canvas)
+        
+        scrollable_frame.bind(
+            "<Configure>",
+            lambda e: self.canvas.configure(scrollregion=self.canvas.bbox("all"))
+        )
+        
+        self.canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
+        self.canvas.configure(yscrollcommand=scrollbar.set)
+        
+        # Add scroll functionality
+        self.add_scroll_functionality(self.canvas)
+        
+        # Create all sections
+        self.create_general_rules(scrollable_frame)
+        self.create_downloads_section(scrollable_frame)
+        self.create_tribute_section(scrollable_frame)
+        self.create_cluster_section(scrollable_frame)
+        self.create_pve_schedule_section(scrollable_frame)
+        self.create_tribe_settings_section(scrollable_frame)
+        self.create_tribe_warfare_section(scrollable_frame)
+        self.create_disease_network_section(scrollable_frame)
+        self.create_game_mechanics_section(scrollable_frame)
+        self.create_cryopod_section(scrollable_frame)
+        self.create_genesis_sections(scrollable_frame)
+        self.create_hexagons_section(scrollable_frame)
+        
+        # Pack the scrollable elements
+        self.canvas.pack(side="left", fill="both", expand=True)
+        scrollbar.pack(side="right", fill="y")
     def create_labeled_checkbox(self, parent, text, row, column, columnspan=1):
         var = tk.BooleanVar()
         self.variables[text] = var
