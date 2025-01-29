@@ -326,11 +326,16 @@ def create_item_stat_clamps_section(self):
         # Create right column stats
         for i, stat in enumerate(right_stats):
             create_stat_clamp(frame, stat, i + 1, 2)
-            
-            
-if __name__ == "__main__":
-    root = tk.Tk()
-    root.geometry("800x600")
-    app = RulesContent(root)
-    app.pack(fill="both", expand=True)
-    root.mainloop()
+
+        def main():
+            root = tk.Tk()
+            app = RulesContent(root)  # Note: AdminContent, not AdminPanel
+            app.pack(fill="both", expand=True)
+            root.mainloop()
+                    
+        if __name__ == "__main__":
+            root = tk.Tk()
+            root.geometry("800x600")
+            app = RulesContent(root)
+            app.pack(fill="both", expand=True)
+            root.mainloop()
