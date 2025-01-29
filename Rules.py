@@ -45,27 +45,6 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
         self.canvas.pack(side="left", fill="both", expand=True)
         scrollbar.pack(side="right", fill="y")
 
-    def create_slider_with_entry(self, parent, text, default_value, unit=""):
-        frame = ttk.Frame(parent)
-        frame.pack(fill="x", pady=2)
-        
-        ttk.Label(frame, text=text).pack(side="left")
-        
-        slider = ttk.Scale(frame, from_=0, 
-                        to=(100 if isinstance(default_value, float) else 1000),
-                        orient="horizontal")
-        slider.set(default_value)
-        slider.pack(side="left", fill="x", expand=True, padx=5)
-        
-        entry_var = tk.StringVar(value=str(default_value))
-        entry = ttk.Entry(frame, textvariable=entry_var, width=8)
-        entry.pack(side="left", padx=5)
-        
-        if unit:
-            ttk.Label(frame, text=unit).pack(side="left")
-            
-        return slider, entry_var
-    
     def create_labeled_checkbox(self, parent, text, row, column, columnspan=1):
         var = tk.BooleanVar()
         self.variables[text] = var
@@ -297,26 +276,6 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
         
         return slider, entry_var
 
-    def create_slider_with_entry(self, parent, text, default_value, unit=""):
-        frame = ttk.Frame(parent)
-        frame.pack(fill="x", pady=2)
-        
-        ttk.Label(frame, text=text).pack(side="left")
-        
-        slider = ttk.Scale(frame, from_=0, 
-                        to=1000,  # Using 1000 as max for integer values
-                        orient="horizontal")
-        slider.set(default_value)
-        slider.pack(side="left", fill="x", expand=True, padx=5)
-        
-        entry_var = tk.StringVar(value=str(default_value))
-        entry = ttk.Entry(frame, textvariable=entry_var, width=8)
-        entry.pack(side="left", padx=5)
-        
-        if unit:
-            ttk.Label(frame, text=unit).pack(side="left")
-            
-        return slider, entry_var
 
     def create_pve_schedule_section(self):
         frame = ttk.LabelFrame(self.scrollable_frame, text="PvE Schedule")
