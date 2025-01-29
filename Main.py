@@ -3,6 +3,7 @@ from tkinter import ttk
 from Administration_section import AdminContent
 from Auto_managment import AutomaticManagement
 from Rules import RulesContent
+from Rules import RulesContent
 
 class AdminPanel:
     def __init__(self, root):
@@ -177,6 +178,9 @@ class AdminPanel:
             elif selection == "Automatic Management":
                 auto_content = AutomaticManagement(self.content_area)
                 auto_content.pack(fill="both", expand=True)
+            elif selection == "Rules":
+                rules_content = RulesContent(self.content_area)
+                rules_content.pack(fill="both", expand=True)
 
 class TabSystem(ttk.Frame):
     def __init__(self, parent):
