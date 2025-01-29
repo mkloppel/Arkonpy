@@ -169,10 +169,13 @@ class AdminPanel:
             for widget in self.content_area.winfo_children():
                 widget.destroy()
             
-            # Load specific content for Administration
+            # Load specific content for each section
             if selection == "Administration":
                 admin_content = AdminContent(self.content_area)
                 admin_content.pack(fill="both", expand=True)
+            elif selection == "Automatic Management":
+                auto_content = AutomaticManagement(self.content_area)
+                auto_content.pack(fill="both", expand=True)
 
 class TabSystem(ttk.Frame):
     def __init__(self, parent):
