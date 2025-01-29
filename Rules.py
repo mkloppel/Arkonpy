@@ -31,7 +31,7 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
         # Create all sections
         self.create_general_rules()
         self.create_tribute_section()
-        self.create_cluster_section() 
+        self.create_cluster_options_section() 
         self.create_pve_schedule_section()
         self.create_tribe_settings_section()
         self.create_tribe_warfare_section()
