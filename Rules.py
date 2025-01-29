@@ -338,7 +338,9 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
         ]
         
         for i, (text, default, unit, is_float) in enumerate(sliders_config):
-            self.create_slider_with_entry(frame, text, default, i + 1, unit, is_float)
+            slider_frame = ttk.Frame(frame)
+            slider_frame.grid(row=i + 1, column=0, columnspan=3, sticky='ew', padx=5, pady=2)
+            self.create_slider_with_entry(slider_frame, text, default, unit, is_float)
 
     def create_genesis_sections(self):
         # Genesis Part 1
