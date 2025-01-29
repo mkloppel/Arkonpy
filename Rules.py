@@ -52,28 +52,28 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
         cb.grid(row=row, column=column, columnspan=columnspan, sticky='w', padx=5, pady=2)
         return cb
 
-    def create_slider_with_entry(self, parent, text, default_value, row, unit="", float_type=True):
-        label = ttk.Label(parent, text=text)
-        label.grid(row=row, column=0, sticky='w', padx=5, pady=2)
-        
+    def create_slider_with_entry(self, parent, text, default_value, unit="", float_type=True):
         frame = ttk.Frame(parent)
-        frame.grid(row=row, column=1, sticky='ew', padx=5, pady=2)
+        frame.pack(fill="x", pady=2)
+        
+        label = ttk.Label(frame, text=text)
+        label.pack(side="left", padx=5)
         
         slider_var = tk.DoubleVar(value=float(default_value))
         slider = ttk.Scale(frame, from_=0, to=100 if float_type else 1000,
                          variable=slider_var, orient='horizontal')
-        slider.grid(row=0, column=0, sticky='ew', padx=(0, 5))
+        slider.pack(side="left", fill="x", expand=True, padx=5)
         
         entry_var = tk.StringVar(value=str(default_value))
         entry = ttk.Entry(frame, textvariable=entry_var, width=10)
-        entry.grid(row=0, column=1, padx=(0, 5))
+        entry.pack(side="left", padx=5)
         
         if unit:
             unit_label = ttk.Label(frame, text=unit)
-            unit_label.grid(row=0, column=2, padx=(0, 5))
+            unit_label.pack(side="left", padx=5)
         
         self.slider_values[text] = (slider_var, entry_var)
-        return slider, entry
+        return frame, slider, entry
 
     def create_time_input(self, parent, text, row, column):
         def validate_time(P):
@@ -135,7 +135,9 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
         ]
         
         for i, (text, default, unit, is_float) in enumerate(slider_configs):
-            self.create_slider_with_entry(frame, text, default, i + len(left_checkboxes), unit, is_float)
+            slider_frame = ttk.Frame(frame)
+            slider_frame.grid(row=i + len(left_checkboxes), column=0, columnspan=3, sticky='ew', padx=5, pady=2)
+            self.create_slider_with_entry(slider_frame, text, default, unit, is_float)
 
     def create_downloads_section(self):
         frame = ttk.LabelFrame(self.scrollable_frame, text="Downloads")
