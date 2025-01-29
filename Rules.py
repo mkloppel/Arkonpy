@@ -226,7 +226,7 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
             slider_frame.grid(row=i + len(checkboxes), column=0, columnspan=3, sticky='ew', padx=5, pady=2)
             self.create_slider_with_entry(slider_frame, text, default, unit, is_float)
         
-
+    
     def create_pve_schedule_section(self):
         frame = ttk.LabelFrame(self.scrollable_frame, text="PvE Schedule")
         frame.grid(row=4, column=0, sticky='nsew', padx=5, pady=5)
@@ -383,7 +383,7 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
         ]
         
         for i, (text, default, unit, is_float) in enumerate(sliders_config):
-            self.create_slider_with_entry(frame, text, default, i + 2, unit, is_float)
+            self.create_slider_with_entry(frame, text, default, unit, is_float)
 
     def create_item_stat_clamps_section(self):
         frame = ttk.LabelFrame(self.scrollable_frame, text="Item Stat Clamps")
