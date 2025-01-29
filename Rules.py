@@ -31,7 +31,7 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
         # Create all sections
         self.create_general_rules()
         self.create_tribute_section()
-        self.create_cluster_options_section() 
+        self.create_cluster_options_section()
         self.create_pve_schedule_section()
         self.create_tribe_settings_section()
         self.create_tribe_warfare_section()
@@ -84,7 +84,7 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
         label = ttk.Label(parent, text=text)
         label.grid(row=row, column=column, padx=5, pady=2)
         
-        vcmd = (self.root.register(validate_time), '%P')
+        vcmd = (self.register(validate_time), '%P')
         entry = ttk.Entry(parent, width=10, validate='key', validatecommand=vcmd)
         entry.insert(0, "00:00")
         entry.grid(row=row, column=column + 1, padx=5, pady=2)
@@ -184,8 +184,13 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
             self.create_labeled_checkbox(frame, text, i, 0)
         
         # Max Tribute settings
-        self.create_slider_with_entry(frame, "Max Tribute Dinos", 50, 3, "dinos", False)
-        self.create_slider_with_entry(frame, "Max Tribute Items", 50, 4, "items", False)
+        slider_frame = ttk.Frame(frame)
+        slider_frame.grid(row=3, column=0, columnspan=3, sticky='ew', padx=5, pady=2)
+        self.create_slider_with_entry(slider_frame, "Max Tribute Dinos", 50, "dinos", False)
+        
+        slider_frame2 = ttk.Frame(frame)
+        slider_frame2.grid(row=4, column=0, columnspan=3, sticky='ew', padx=5, pady=2)
+        self.create_slider_with_entry(slider_frame2, "Max Tribute Items", 50, "items", False)
         
     def create_cluster_options_section(self, parent):
         section = ttk.LabelFrame(parent, text="Cluster Tribute Options", padding="5")
@@ -246,31 +251,6 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
         
         ttk.Checkbutton(schedule_frame, text="PvE Schedule").pack(anchor="w", pady=1)
         
-    def create_slider_with_entry(self, parent, text, default_value, unit=""):
-        frame = ttk.Frame(parent)
-        frame.pack(fill="x", pady=2)
-        
-        ttk.Label(frame, text=text).pack(side="left")
-        
-        # Determine if value is float or int
-        is_float = isinstance(default_value, float)
-        
-        slider = ttk.Scale(frame, 
-                            from_=0, 
-                            to=(100 if is_float else 2000),  # Higher max for time values
-                            orient="horizontal")
-        slider.set(default_value)
-        slider.pack(side="left", fill="x", expand=True, padx=5)
-        
-        entry_var = tk.StringVar(value=str(default_value))
-        entry = ttk.Entry(frame, textvariable=entry_var, width=8)
-        entry.pack(side="left", padx=5)
-        
-        if unit:
-            ttk.Label(frame, text=unit).pack(side="left")
-        
-        return slider, entry_var
-
 
     def create_pve_schedule_section(self):
         frame = ttk.LabelFrame(self.scrollable_frame, text="PvE Schedule")
@@ -299,7 +279,9 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
         self.create_labeled_checkbox(frame, "Allow Tribe Alliances", 0, 0)
         
         for i, (text, default, unit, is_float) in enumerate(sliders_config):
-            self.create_slider_with_entry(frame, text, default, i + 1, unit, is_float)
+            slider_frame = ttk.Frame(frame)
+            slider_frame.grid(row=i + 1, column=0, columnspan=3, sticky='ew', padx=5, pady=2)
+            self.create_slider_with_entry(slider_frame, text, default, unit, is_float)
 
     def create_tribe_warfare_section(self):
         frame = ttk.LabelFrame(self.scrollable_frame, text='PvE "Tribe Warfare" Options')
@@ -315,8 +297,13 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
         for i, text in enumerate(checkboxes):
             self.create_labeled_checkbox(frame, text, i, 0)
             
-        self.create_slider_with_entry(frame, "Effectiveness Multiplier", 1, 3, "x", True)
-        self.create_slider_with_entry(frame, "Skill Multiplier", 1, 4, "x", True)
+        slider_frame = ttk.Frame(frame)
+        slider_frame.grid(row=3, column=0, columnspan=3, sticky='ew', padx=5, pady=2)
+        self.create_slider_with_entry(slider_frame, "Effectiveness Multiplier", 1, "x", True)
+        
+        slider_frame2 = ttk.Frame(frame)
+        slider_frame2.grid(row=4, column=0, columnspan=3, sticky='ew', padx=5, pady=2)
+        self.create_slider_with_entry(slider_frame2, "Skill Multiplier", 1, "x", True)
 
     def create_disease_network_section(self):
         frame = ttk.LabelFrame(self.scrollable_frame, text="Disease and Network Settings")
@@ -488,12 +475,6 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
         for i, stat in enumerate(right_stats):
             create_stat_clamp(frame, stat, i + 1, 2)
 
-        def main():
-            root = tk.Tk()
-            app = RulesContent(root)
-            app.pack(fill="both", expand=True)
-            root.mainloop()
-                    
         if __name__ == "__main__":
             root = tk.Tk()
             root.geometry("800x600")
