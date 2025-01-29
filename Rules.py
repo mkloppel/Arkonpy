@@ -45,6 +45,37 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
         # Pack the scrollable elements
         self.canvas.pack(side="left", fill="both", expand=True)
         scrollbar.pack(side="right", fill="y")
+    def create_general_rules(self):
+        frame = ttk.LabelFrame(self.scrollable_frame, text="General Rules")
+        frame.grid(row=0, column=0, sticky='nsew', padx=5, pady=5)
+        frame.grid_columnconfigure(1, weight=1)
+        
+        # Left column checkboxes
+        left_checkboxes = [
+            "Enable PvP",
+            "Allow Cave Building",
+            "Allow Flyer Carry",
+            "Allow Multiple Floor Platforms",
+            "Enable Extra Structure Prevention Volumes"
+        ]
+        
+        # Right column checkboxes
+        right_checkboxes = [
+            "Allow Raid Dino Feeding",
+            "Prevent Diseases",
+            "Prevent Tribute Downloads",
+            "No Survivor Downloads",
+            "Enable Extra Dino Spawns"
+        ]
+        
+        # Create left column
+        for i, text in enumerate(left_checkboxes):
+            self.create_labeled_checkbox(frame, text, i, 0)
+            
+        # Create right column
+        for i, text in enumerate(right_checkboxes):
+            self.create_labeled_checkbox(frame, text, i, 2)
+
     def create_labeled_checkbox(self, parent, text, row, column, columnspan=1):
         var = tk.BooleanVar()
         self.variables[text] = var
