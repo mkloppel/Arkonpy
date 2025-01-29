@@ -30,7 +30,6 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
         
         # Create all sections
         self.create_general_rules()
-        self.create_downloads_section()
         self.create_tribute_section()
         self.create_cluster_section() 
         self.create_pve_schedule_section()
@@ -45,6 +44,35 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
         # Pack the scrollable elements
         self.canvas.pack(side="left", fill="both", expand=True)
         scrollbar.pack(side="right", fill="y")
+    def create_downloads_section(self):
+        frame = ttk.LabelFrame(self.scrollable_frame, text="Downloads")
+        frame.grid(row=1, column=0, sticky='nsew', padx=5, pady=5)
+        frame.grid_columnconfigure(1, weight=1)
+        
+        # Left column checkboxes
+        left_checkboxes = [
+            "Allow Foreign Dino Downloads",
+            "Allow Item Downloads",
+            "Allow Survivor Downloads",
+            "Allow Foreign Item Downloads"
+        ]
+        
+        # Right column checkboxes  
+        right_checkboxes = [
+            "Allow Foreign Survivor Downloads",
+            "Prevent Download Dino Classes",
+            "Prevent Download Item Classes",
+            "Prevent Upload Dino Classes"
+        ]
+        
+        # Create left column
+        for i, text in enumerate(left_checkboxes):
+            self.create_labeled_checkbox(frame, text, i, 0)
+            
+        # Create right column
+        for i, text in enumerate(right_checkboxes):
+            self.create_labeled_checkbox(frame, text, i, 2)
+
     def create_general_rules(self):
         frame = ttk.LabelFrame(self.scrollable_frame, text="General Rules")
         frame.grid(row=0, column=0, sticky='nsew', padx=5, pady=5)
