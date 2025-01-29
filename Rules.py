@@ -363,8 +363,10 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
         
         for i, text in enumerate(checkboxes):
             self.create_labeled_checkbox(frame2, text, i, 0)
-            
-        self.create_slider_with_entry(frame2, "World Buff Scaling Efficacy", 1, 3, "x", True)
+        
+        slider_frame = ttk.Frame(frame2)
+        slider_frame.grid(row=3, column=0, columnspan=3, sticky='ew', padx=5, pady=2)
+        self.create_slider_with_entry(slider_frame, "World Buff Scaling Efficacy", 1, "x", True)
 
     def create_hexagons_section(self):
         frame = ttk.LabelFrame(self.scrollable_frame, text="Hexagons")
