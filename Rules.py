@@ -331,5 +331,6 @@ def create_item_stat_clamps_section(self):
 if __name__ == "__main__":
     root = tk.Tk()
     root.geometry("800x600")
-    app = ArkServerConfig(root)
+    app = RulesContent(root)
+    app.pack(fill="both", expand=True)
     root.mainloop()
