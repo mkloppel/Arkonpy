@@ -5,6 +5,7 @@ from Auto_managment import AutomaticManagement
 from Rules import RulesContent
 from Chatnotify import ChatNotificationsPanel
 from Hudvisuals import HUDVisualsPanel
+from Playersettings import PlayerSettingsPanel
 
 class AdminPanel:
     def __init__(self, root):
@@ -188,6 +189,9 @@ class AdminPanel:
             elif selection == "HUD and Visuals":
                 hud_content = HUDVisualsPanel(self.content_area)
                 hud_content.pack(fill="both", expand=True)
+            elif selection == "Player Settings":
+                player_content = PlayerSettingsPanel(self.content_area)
+                player_content.pack(fill="both", expand=True)
 
 class TabSystem(ttk.Frame):
     def __init__(self, parent):
