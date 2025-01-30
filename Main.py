@@ -3,6 +3,7 @@ from tkinter import ttk
 from Administration_section import AdminContent
 from Auto_managment import AutomaticManagement
 from Rules import RulesContent
+from Chatnotify import ChatNotificationsPanel
 
 class AdminPanel:
     def __init__(self, root):
@@ -180,6 +181,9 @@ class AdminPanel:
             elif selection == "Rules":
                 rules_content = RulesContent(self.content_area)
                 rules_content.pack(fill="both", expand=True)
+            elif selection == "Chat and Notifications":
+                chat_content = ChatNotificationsPanel(self.content_area)
+                chat_content.pack(fill="both", expand=True)
 
 class TabSystem(ttk.Frame):
     def __init__(self, parent):
