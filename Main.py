@@ -169,7 +169,8 @@ class AdminPanel:
             selection = self.listbox.get(self.listbox.curselection())
             self.content_header.configure(text=selection)
             
-            # Clear previous content
+            # Clear previous content and unbind any scroll events
+            self.root.unbind_all("<MouseWheel>")
             for widget in self.content_area.winfo_children():
                 widget.destroy()
             
