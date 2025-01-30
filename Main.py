@@ -4,6 +4,7 @@ from Administration_section import AdminContent
 from Auto_managment import AutomaticManagement
 from Rules import RulesContent
 from Chatnotify import ChatNotificationsPanel
+from Hudvisuals import HUDVisualsPanel
 
 class AdminPanel:
     def __init__(self, root):
@@ -184,6 +185,9 @@ class AdminPanel:
             elif selection == "Chat and Notifications":
                 chat_content = ChatNotificationsPanel(self.content_area)
                 chat_content.pack(fill="both", expand=True)
+            elif selection == "HUD and Visuals":
+                hud_content = HUDVisualsPanel(self.content_area)
+                hud_content.pack(fill="both", expand=True)
 
 class TabSystem(ttk.Frame):
     def __init__(self, parent):
