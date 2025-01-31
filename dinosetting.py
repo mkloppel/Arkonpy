@@ -362,4 +362,33 @@ class DinoSettingsPanel(ttk.Frame, ScrollableFrameMixin):
 
         
     if __name__ == "__main__":
-        main()
+        main()import tkinter as tk
+from tkinter import ttk
+from scrollable_frame import ScrollableFrameMixin
+
+class DinoSettingsPanel(ttk.Frame, ScrollableFrameMixin):
+    def __init__(self, parent):
+        super().__init__(parent)
+        self.create_frames()
+
+    def create_frames(self):
+        """Create and setup the main container frame"""
+        # Initialize the scrollable frame
+        self.setup_scrollable_frame()
+        
+        # Create the main settings section
+        self.create_dino_settings_section(self.scrollable_frame)
+
+    def create_dino_settings_section(self, parent):
+        """Create the dinosaur settings section"""
+        settings_frame = ttk.LabelFrame(parent, text="Dinosaur Settings")
+        settings_frame.pack(fill="x", padx=5, pady=5)
+
+def main():
+    root = tk.Tk()
+    app = DinoSettingsPanel(root)
+    app.pack(fill="both", expand=True)
+    root.mainloop()
+
+if __name__ == "__main__":
+    main()
