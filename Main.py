@@ -6,6 +6,7 @@ from Rules import RulesContent
 from Chatnotify import ChatNotificationsPanel
 from Hudvisuals import HUDVisualsPanel
 from Playersettings import PlayerSettingsPanel
+from dinosetting import DinoSettingsPanel
 
 class AdminPanel:
     def __init__(self, root):
@@ -193,6 +194,9 @@ class AdminPanel:
             elif selection == "Player Settings":
                 player_content = PlayerSettingsPanel(self.content_area)
                 player_content.pack(fill="both", expand=True)
+            elif selection == "Dino Settings":
+                dino_content = DinoSettingsPanel(self.content_area)
+                dino_content.pack(fill="both", expand=True)
 
 class TabSystem(ttk.Frame):
     def __init__(self, parent):
