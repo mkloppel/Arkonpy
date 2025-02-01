@@ -8,6 +8,7 @@ from Hudvisuals import HUDVisualsPanel
 from Playersettings import PlayerSettingsPanel
 from dinosetting import DinoSettingsPanel
 from enviromentsection import EnvironmentPanel
+from Structures import StructuresPanel
 
 class AdminPanel:
     def __init__(self, root):
@@ -201,6 +202,9 @@ class AdminPanel:
             elif selection == "Environment":
                 env_content = EnvironmentPanel(self.content_area)
                 env_content.pack(fill="both", expand=True)
+            elif selection == "Structures":
+                structures_content = StructuresPanel(self.content_area)
+                structures_content.pack(fill="both", expand=True)
 
 class TabSystem(ttk.Frame):
     def __init__(self, parent):
