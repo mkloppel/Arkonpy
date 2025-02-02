@@ -13,6 +13,7 @@ from engrams import EngramsPanel
 from serverplayerlists import ServerFileDetailsPanel
 from customgus import CustomSettingsPanel
 from customgameini import CustomGameINIPanel
+from playerdinolevelprog import LevelProgressionsPanel
 
 class AdminPanel:
     def __init__(self, root):
@@ -221,6 +222,9 @@ class AdminPanel:
             elif selection == "Custom Game.ini Settings":
                 custom_gameini_content = CustomGameINIPanel(self.content_area)
                 custom_gameini_content.pack(fill="both", expand=True)
+            elif selection == "Player and Dino Level Progressions":
+                level_prog_content = LevelProgressionsPanel(self.content_area)
+                level_prog_content.pack(fill="both", expand=True)
 
 class TabSystem(ttk.Frame):
     def __init__(self, parent):
