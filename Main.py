@@ -18,6 +18,7 @@ from craftingoverrides import CraftingOverridesPanel
 from stacksizeover import StackSizeOverridesPanel
 from mapspawnover import MapSpawnerOverridesPanel
 from supplycrateover import SupplyCrateOverridesPanel
+from preventtransferover import PreventTransferOverridesPanel
 
 class AdminPanel:
     def __init__(self, root):
@@ -51,7 +52,8 @@ class AdminPanel:
             'Crafting Overrides',
             'Stack Size Overrides',
             'Map Spawner Overrides',
-            'Supply Crate Overrides'
+            'Supply Crate Overrides',
+            'Prevent Transfer Overrides'
         ]
         
         # Create enhanced header section 1
@@ -242,6 +244,9 @@ class AdminPanel:
             elif selection == "Supply Crate Overrides":
                 supply_crate_content = SupplyCrateOverridesPanel(self.content_area)
                 supply_crate_content.pack(fill="both", expand=True)
+            elif selection == "Prevent Transfer Overrides":
+                prevent_transfer_content = PreventTransferOverridesPanel(self.content_area)
+                prevent_transfer_content.pack(fill="both", expand=True)
 
 class TabSystem(ttk.Frame):
     def __init__(self, parent):
