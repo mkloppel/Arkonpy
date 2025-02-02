@@ -17,6 +17,7 @@ from playerdinolevelprog import LevelProgressionsPanel
 from craftingoverrides import CraftingOverridesPanel
 from stacksizeover import StackSizeOverridesPanel
 from mapspawnover import MapSpawnerOverridesPanel
+from supplycrateover import SupplyCrateOverridesPanel
 
 class AdminPanel:
     def __init__(self, root):
@@ -49,7 +50,8 @@ class AdminPanel:
             'Player and Dino Level Progressions',
             'Crafting Overrides',
             'Stack Size Overrides',
-            'Map Spawner Overrides'
+            'Map Spawner Overrides',
+            'Supply Crate Overrides'
         ]
         
         # Create enhanced header section 1
@@ -237,6 +239,9 @@ class AdminPanel:
             elif selection == "Map Spawner Overrides":
                 map_spawner_content = MapSpawnerOverridesPanel(self.content_area)
                 map_spawner_content.pack(fill="both", expand=True)
+            elif selection == "Supply Crate Overrides":
+                supply_crate_content = SupplyCrateOverridesPanel(self.content_area)
+                supply_crate_content.pack(fill="both", expand=True)
 
 class TabSystem(ttk.Frame):
     def __init__(self, parent):
