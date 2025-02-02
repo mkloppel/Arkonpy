@@ -9,6 +9,7 @@ from Playersettings import PlayerSettingsPanel
 from dinosetting import DinoSettingsPanel
 from enviromentsection import EnvironmentPanel
 from Structures import StructuresPanel
+from engrams import EngramsPanel
 
 class AdminPanel:
     def __init__(self, root):
@@ -205,6 +206,9 @@ class AdminPanel:
             elif selection == "Structures":
                 structures_content = StructuresPanel(self.content_area)
                 structures_content.pack(fill="both", expand=True)
+            elif selection == "Engrams":
+                engrams_content = EngramsPanel(self.content_area)
+                engrams_content.pack(fill="both", expand=True)
 
 class TabSystem(ttk.Frame):
     def __init__(self, parent):
