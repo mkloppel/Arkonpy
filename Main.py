@@ -14,6 +14,7 @@ from serverplayerlists import ServerFileDetailsPanel
 from customgus import CustomSettingsPanel
 from customgameini import CustomGameINIPanel
 from playerdinolevelprog import LevelProgressionsPanel
+from craftingoverrides import CraftingOverridesPanel
 
 class AdminPanel:
     def __init__(self, root):
@@ -225,6 +226,9 @@ class AdminPanel:
             elif selection == "Player and Dino Level Progressions":
                 level_prog_content = LevelProgressionsPanel(self.content_area)
                 level_prog_content.pack(fill="both", expand=True)
+            elif selection == "Crafting Overrides":
+                crafting_content = CraftingOverridesPanel(self.content_area)
+                crafting_content.pack(fill="both", expand=True)
 
 class TabSystem(ttk.Frame):
     def __init__(self, parent):
