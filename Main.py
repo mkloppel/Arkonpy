@@ -12,6 +12,7 @@ from Structures import StructuresPanel
 from engrams import EngramsPanel
 from serverplayerlists import ServerFileDetailsPanel
 from customgus import CustomSettingsPanel
+from customgameini import CustomGameINIPanel
 
 class AdminPanel:
     def __init__(self, root):
@@ -217,6 +218,9 @@ class AdminPanel:
             elif selection == "Custom GameUserSettings.ini Settings":
                 custom_gus_content = CustomSettingsPanel(self.content_area)
                 custom_gus_content.pack(fill="both", expand=True)
+            elif selection == "Custom Game.ini Settings":
+                custom_gameini_content = CustomGameINIPanel(self.content_area)
+                custom_gameini_content.pack(fill="both", expand=True)
 
 class TabSystem(ttk.Frame):
     def __init__(self, parent):
