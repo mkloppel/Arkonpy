@@ -15,6 +15,7 @@ from customgus import CustomSettingsPanel
 from customgameini import CustomGameINIPanel
 from playerdinolevelprog import LevelProgressionsPanel
 from craftingoverrides import CraftingOverridesPanel
+from stacksizeover import StackSizeOverridesPanel
 
 class AdminPanel:
     def __init__(self, root):
@@ -229,6 +230,9 @@ class AdminPanel:
             elif selection == "Crafting Overrides":
                 crafting_content = CraftingOverridesPanel(self.content_area)
                 crafting_content.pack(fill="both", expand=True)
+            elif selection == "Stack Size Overrides":
+                stack_size_content = StackSizeOverridesPanel(self.content_area)
+                stack_size_content.pack(fill="both", expand=True)
 
 class TabSystem(ttk.Frame):
     def __init__(self, parent):
