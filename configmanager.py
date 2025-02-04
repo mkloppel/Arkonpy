@@ -17,6 +17,7 @@ class ServerProfile:
         # Dictionaries to hold configuration settings for different files
         self.game_user_settings = {}  # Settings to be written to GameUserSettings.ini
         self.game_settings = {}       # Settings to be written to Game.ini
+        self.observers = []  # List of GUI panels observing this profile
 
     def load_profile(self):
         """
@@ -41,6 +42,32 @@ class ServerProfile:
         }
         with open(profile_file, "w", encoding="utf-8") as file:
             json.dump(data, file, indent=4)
+        # Notify observers that settings have been saved
+        self.notify_observers("save")
+
+    def add_observer(self, observer):
+        """Add a GUI panel as an observer"""
+        if observer not in self.observers:
+            self.observers.append(observer)
+    
+    def remove_observer(self, observer):
+        """Remove a GUI panel observer"""
+        if observer in self.observers:
+            self.observers.remove(observer)
+            
+    def notify_observers(self, event_type):
+        """Notify all observers of changes"""
+        for observer in self.observers:
+            if hasattr(observer, 'on_profile_changed'):
+                observer.on_profile_changed(event_type)
+                
+    def update_setting(self, section, key, value):
+        """Update a specific setting and notify observers"""
+        if section == "GameUserSettings":
+            self.game_user_settings[key] = value
+        elif section == "Game":
+            self.game_settings[key] = value
+        self.notify_observers("update")
 
     def generate_ini_file(self, template_path, output_path):
         """
