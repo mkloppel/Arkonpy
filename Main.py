@@ -1,5 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
+from pathlib import Path
+from configmanager import ServerManager, ServerProfile
 from Administration_section import AdminContent
 from Auto_managment import AutomaticManagement
 from Rules import RulesContent
@@ -24,6 +26,14 @@ class AdminPanel:
     def __init__(self, root):
         self.root = root
         self.root.title("Admin Panel")
+        
+        # Initialize ServerManager with config directory
+        config_dir = Path("server_profiles")
+        config_dir.mkdir(exist_ok=True)
+        self.server_manager = ServerManager(config_dir)
+        
+        # Create default profile
+        self.current_profile = self.server_manager.add_server_profile("Default")
         
         # Set minimum window size
         self.root.minsize(800, 1200)
@@ -297,6 +307,8 @@ class TabSystem(ttk.Frame):
 class ProfileSection(ttk.Frame):
     def __init__(self, parent):
         super().__init__(parent)
+        self.parent = parent
+        self.profile = None  # Will hold current ServerProfile
         self.setup_grid()
         self.create_profile_row()
         self.create_version_row()
@@ -311,18 +323,42 @@ class ProfileSection(ttk.Frame):
     def create_profile_row(self):
         # Profile label and entry
         ttk.Label(self, text="Profile:").grid(row=0, column=0, padx=5, sticky='w')
-        profile_entry = ttk.Entry(self)
-        profile_entry.insert(0, "Unnamed Profile")
-        profile_entry.grid(row=0, column=1, sticky='ew', padx=5)
+        self.profile_entry = ttk.Entry(self)
+        self.profile_entry.insert(0, "Unnamed Profile")
+        self.profile_entry.grid(row=0, column=1, sticky='ew', padx=5)
         
         # Right-side buttons
         buttons_frame = ttk.Frame(self)
         buttons_frame.grid(row=0, column=2, sticky='e')
         
         ttk.Button(buttons_frame, text="Create Support Zip").pack(side='left', padx=2)
-        ttk.Button(buttons_frame, text="Sync").pack(side='left', padx=2)
-        ttk.Button(buttons_frame, text="Import").pack(side='left', padx=2)
-        ttk.Button(buttons_frame, text="Save").pack(side='left', padx=2)
+        ttk.Button(buttons_frame, text="Sync", command=self.sync_profile).pack(side='left', padx=2)
+        ttk.Button(buttons_frame, text="Import", command=self.import_profile).pack(side='left', padx=2)
+        ttk.Button(buttons_frame, text="Save", command=self.save_profile).pack(side='left', padx=2)
+        
+    def set_profile(self, profile):
+        """Set the current profile and update UI"""
+        self.profile = profile
+        if profile:
+            self.profile_entry.delete(0, tk.END)
+            self.profile_entry.insert(0, profile.name)
+            
+    def save_profile(self):
+        """Save current profile"""
+        if self.profile:
+            self.profile.save_profile()
+            
+    def sync_profile(self):
+        """Sync profile with server files"""
+        if self.profile:
+            # TODO: Implement sync logic
+            pass
+            
+    def import_profile(self):
+        """Import profile from files"""
+        if self.profile:
+            # TODO: Implement import logic
+            pass
         
     def create_version_row(self):
         # Version info
