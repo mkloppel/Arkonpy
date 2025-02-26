@@ -1,10 +1,17 @@
 import tkinter as tk
 from tkinter import ttk
 from scrollable_frame import ScrollableFrameMixin
+from server_config_manager import ServerConfigManager
+from admin_name_passwords import NamePasswordsManager
 
 class AdminContent(ttk.Frame, ScrollableFrameMixin):
     def __init__(self, parent):
         super().__init__(parent)
+        
+        # Initialize the config manager
+        self.config_manager = ServerConfigManager()
+        
+        # Create the UI
         self.create_frames()
         
     def create_frames(self):
@@ -43,28 +50,8 @@ class AdminContent(ttk.Frame, ScrollableFrameMixin):
         section = ttk.LabelFrame(parent, text="Name and Passwords", padding="5")
         section.pack(fill="x", padx=5, pady=5)
         
-        # Server Name row
-        name_frame = ttk.Frame(section)
-        name_frame.pack(fill="x")
-        ttk.Label(name_frame, text="Server Name:").pack(side="left")
-        ttk.Entry(name_frame).pack(side="left", fill="x", expand=True, padx=5)
-        ttk.Label(name_frame, text="Length: 0").pack(side="left")
-        
-        # Passwords row
-        pass_frame = ttk.Frame(section)
-        pass_frame.pack(fill="x", pady=5)
-        
-        # Server Password
-        ttk.Label(pass_frame, text="Server Password:").pack(side="left")
-        ttk.Entry(pass_frame, show="*").pack(side="left", padx=5)
-        
-        # Admin Password
-        ttk.Label(pass_frame, text="Admin Password:").pack(side="left")
-        ttk.Entry(pass_frame, show="*").pack(side="left", padx=5)
-        
-        # Spectator Password
-        ttk.Label(pass_frame, text="Spectator Password:").pack(side="left")
-        ttk.Entry(pass_frame, show="*").pack(side="left", padx=5)
+        # Create the name and passwords manager
+        self.name_passwords_manager = NamePasswordsManager(section, self.config_manager)
     
     def create_networking_section(self, parent):
         section = ttk.LabelFrame(parent, text="Networking", padding="5")
