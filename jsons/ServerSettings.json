@@ -1,0 +1,1072 @@
+{
+  "ServerSettings": [
+    {
+      "setting": "ActiveMods",
+      "default": null,
+      "value_type": "list (comma-separated string)",
+      "description": "Specifies the order and which mods are loaded. ModIDs are comma separated on one line with no spaces. Priority is descending (left-most has highest priority). Alternatively, the command line ?GameModIds= can be used."
+    },
+    {
+      "setting": "ActiveMapMod",
+      "default": null,
+      "value_type": "string",
+      "description": "Specifies the mod ID for the currently active mod map."
+    },
+    {
+      "setting": "ActiveTotalConversion",
+      "default": null,
+      "value_type": "string",
+      "description": "Used to specify a total conversion mod (e.g., Primitive Plus). Alternatively, the command line -TotalConversionMod=<ModID> can be used."
+    },
+    {
+      "setting": "AdminLogging",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, logs all admin commands to in-game chat."
+    },
+    {
+      "setting": "AllowAnyoneBabyImprintCuddle",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, allows anyone to 'take care' of a baby creature (e.g., cuddle), not just the one who imprinted on it."
+    },
+    {
+      "setting": "AllowCaveBuildingPvE",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, allows building in caves when PvE mode is enabled. (Note: Not working in command-line options before patch 241.5.)"
+    },
+    {
+      "setting": "AllowCaveBuildingPvP",
+      "default": true,
+      "value_type": "boolean",
+      "description": "If False, prevents building in caves when PvP mode is enabled."
+    },
+    {
+      "setting": "AllowCrateSpawnsOnTopOfStructures",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, allows supply crates to spawn on top of structures rather than being blocked by them."
+    },
+    {
+      "setting": "AllowCryoFridgeOnSaddle",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, allows cryofridges to be built on platform saddles and rafts."
+    },
+    {
+      "setting": "AllowFlyerCarryPvE",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, allows flying creatures to pick up wild creatures in PvE."
+    },
+    {
+      "setting": "AllowFlyingStaminaRecovery",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, allows the server to recover stamina when a flyer is stationary."
+    },
+    {
+      "setting": "AllowHideDamageSourceFromLogs",
+      "default": true,
+      "value_type": "boolean",
+      "description": "If False, displays damage source details in tribe logs."
+    },
+    {
+      "setting": "AllowHitMarkers",
+      "default": true,
+      "value_type": "boolean",
+      "description": "If False, disables optional hit markers for ranged attacks."
+    },
+    {
+      "setting": "AllowIntegratedSPlusStructures",
+      "default": true,
+      "value_type": "boolean",
+      "description": "If False, disables all new S+ structures, intended for unofficial servers that wish to keep using the older S+ mod version."
+    },
+    {
+      "setting": "AllowMultipleAttachedC4",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, allows attaching more than one C4 per creature."
+    },
+    {
+      "setting": "AllowRaidDinoFeeding",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, allows Titanosaurs to be permanently tamed by feeding. (Note: On The Island only 3 Titanosaurs spawn, so 3 tamed should block further spawns.)"
+    },
+    {
+      "setting": "AllowSharedConnections",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, allows family sharing players to connect to the server."
+    },
+    {
+      "setting": "AllowTekSuitPowersInGenesis",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, enables TEK suit powers in Genesis: Part 1."
+    },
+    {
+      "setting": "AllowThirdPersonPlayer",
+      "default": true,
+      "value_type": "boolean",
+      "description": "If False, disables the default third-person camera on dedicated servers."
+    },
+    {
+      "setting": "AlwaysAllowStructurePickup",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, disables the timer on the quick pick-up system, allowing immediate structure pickup."
+    },
+    {
+      "setting": "AlwaysNotifyPlayerLeft",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, always notifies players when someone leaves the server."
+    },
+    {
+      "setting": "AutoDestroyDecayedDinos",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, automatically destroys claimable decayed tames on load. (Note: In PvE mode, post-patch 273.691, the auto-unclaim after decay is disabled on official servers.)"
+    },
+    {
+      "setting": "AutoDestroyOldStructuresMultiplier",
+      "default": 0.0,
+      "value_type": "float",
+      "description": "Multiplier for auto-destruction of structures after a period of no nearby tribe activity. Set to 1.0 to enable. Requires the -AutoDestroyStructures command line option. The multiplier scales with each structure's decay time."
+    },
+    {
+      "setting": "AutoSavePeriodMinutes",
+      "default": 15.0,
+      "value_type": "float",
+      "description": "Sets the interval in minutes for automatic saves. Setting to 0 will cause constant saving."
+    },
+    {
+      "setting": "BanListURL",
+      "default": null,
+      "value_type": "string (URL)",
+      "description": "Specifies the URL for the global ban list. Must be enclosed in double quotes. For ARK: Survival Evolved, official URLs vary by version and support only HTTP or both HTTP and HTTPS."
+    },
+    {
+      "setting": "bForceCanRideFliers",
+      "default": null,
+      "value_type": "boolean",
+      "description": "If True, allows flyers to be used on maps where they are normally disabled. (If False, flyers are disabled on any map.)"
+    },
+    {
+      "setting": "ClampItemSpoilingTimes",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, clamps all item spoiling times to their maximum values. Useful to clean up infinite-spoiling exploits, but may conflict with mods altering spoiling times."
+    },
+    {
+      "setting": "ClampItemStats",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, enables clamping of item stats. See ItemStatClamps for more details."
+    },
+    {
+      "setting": "ClampResourceHarvestDamage",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, limits the damage dealt by a tame to a resource based on the resource's remaining health. May reduce yields with high-damage tools or creatures."
+    },
+    {
+      "setting": "CosmeticWhitelistOverride",
+      "default": null,
+      "value_type": "string (URL)",
+      "description": "Specifies the URL to a comma-separated list of whitelisted custom cosmetics in the format: Mod ID|Enable Dynamic Download (0/1)|Allow non-dataonly blueprints (0/1)|Calculated package CRC."
+    },
+    {
+      "setting": "CustomDynamicConfigUrl",
+      "default": null,
+      "value_type": "string (URL)",
+      "description": "Direct URL to a live dynamicconfig.ini file for live configuration updates without a server restart. Requires the -UseDynamicConfig command line option. Must use HTTP and be enclosed in quotes if used on the command line."
+    },
+    {
+      "setting": "CustomLiveTuningUrl",
+      "default": null,
+      "value_type": "string (URL)",
+      "description": "Direct URL to the live tuning file. For ARK: Survival Evolved, official URL is typically http://arkdedicated.com/DefaultOverloads.json; for ARK: Survival Ascended, it is https://cdn2.arkdedicated.com/asa/livetuningoverloads.json. Must use HTTP for Evolved and be enclosed in quotes if used on the command line."
+    },
+    {
+      "setting": "DayCycleSpeedScale",
+      "default": 1.0,
+      "value_type": "float",
+      "description": "Specifies the scaling factor for the overall day/night cycle. The default (1.0) gives the same speed as single-player. Lower values slow the cycle; higher values accelerate it. For a 24-hour in-game cycle, a value of approximately 0.035 is used."
+    },
+    {
+      "setting": "DayTimeSpeedScale",
+      "default": 1.0,
+      "value_type": "float",
+      "description": "Specifies the scaling factor for day time relative to night time (as determined by NightTimeSpeedScale). Lower values increase the length of each day."
+    },
+    {
+      "setting": "DestroyUnconnectedWaterPipes",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, water pipes that are unconnected to any non-pipe or nearby allied player will auto-destroy after two real-time days."
+    },
+    {
+      "setting": "DifficultyOffset",
+      "default": 1.0,
+      "value_type": "float",
+      "description": "Specifies an offset for the server difficulty level."
+    },
+    {
+      "setting": "DinoCharacterFoodDrainMultiplier",
+      "default": 1.0,
+      "value_type": "float",
+      "description": "Scaling factor for the food consumption rate of creatures. Higher values increase consumption and affect taming times."
+    },
+    {
+      "setting": "DinoCharacterHealthRecoveryMultiplier",
+      "default": 1.0,
+      "value_type": "float",
+      "description": "Scaling factor for the health recovery rate of creatures. Higher values accelerate healing."
+    },
+    {
+      "setting": "DinoCharacterStaminaDrainMultiplier",
+      "default": 1.0,
+      "value_type": "float",
+      "description": "Scaling factor for the stamina drain of creatures. Higher values increase stamina consumption."
+    },
+    {
+      "setting": "DinoCountMultiplier",
+      "default": 1.0,
+      "value_type": "float",
+      "description": "Scaling factor for the number of creatures spawned. Higher values result in more spawns."
+    },
+    {
+      "setting": "DinoDamageMultiplier",
+      "default": 1.0,
+      "value_type": "float",
+      "description": "Scaling factor for the damage dealt by wild creatures. Higher values increase damage; lower values decrease it."
+    },
+    {
+      "setting": "DinoResistanceMultiplier",
+      "default": 1.0,
+      "value_type": "float",
+      "description": "Scaling factor for the resistance of wild creatures to damage. Higher values decrease resistance (increasing damage per attack); lower values increase resistance."
+    },
+    {
+      "setting": "DestroyTamesOverTheSoftTameLimit",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, creatures above the soft tame limit are marked for cryopodding and will be automatically destroyed after a countdown. Such events are logged in the tribe log."
+    },
+    {
+      "setting": "DisableCryopodEnemyCheck",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, allows cryopods to be used even when enemies are nearby."
+    },
+    {
+      "setting": "DisableCryopodFridgeRequirement",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, allows cryopods to be used without being near a powered cryofridge."
+    },
+    {
+      "setting": "DisableDinoDecayPvE",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, disables creature decay in PvE mode. (Note: After patch 273.691, official PvE servers disable auto-unclaim of tames after decay.)"
+    },
+    {
+      "setting": "DisableImprintDinoBuff",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, disables the bonus stat buff given to the creature that imprinted on a baby."
+    },
+    {
+      "setting": "DisablePvEGamma",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, prevents the use of the console command 'gamma' in PvE mode."
+    },
+    {
+      "setting": "DisableStructureDecayPvE",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, disables the gradual auto-decay of player structures."
+    },
+    {
+      "setting": "DisableWeatherFog",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, disables fog."
+    },
+    {
+      "setting": "DontAlwaysNotifyPlayerJoined",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, globally disables notifications when players join the server."
+    },
+    {
+      "setting": "EnableExtraStructurePreventionVolumes",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, disables building in certain resource-rich areas (e.g., around major mountains on The Island)."
+    },
+    {
+      "setting": "EnablePvPGamma",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, allows the use of the console command 'gamma' in PvP mode."
+    },
+    {
+      "setting": "ExtinctionEventTimeInterval",
+      "default": null,
+      "value_type": "integer (seconds)",
+      "description": "Specifies the interval in seconds for the extinction mode (ARKpocalypse). For 30 days, use 2592000."
+    },
+    {
+      "setting": "FastDecayUnsnappedCoreStructures",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, unsnapped foundations/pillars/fences/Tek Dedicated Storage decay after the FastDecayInterval (default 12 hours)."
+    },
+    {
+      "setting": "ForceAllStructureLocking",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, forces all structures to be locked by default."
+    },
+    {
+      "setting": "globalVoiceChat",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, enables global voice chat."
+    },
+    {
+      "setting": "HarvestAmountMultiplier",
+      "default": 1.0,
+      "value_type": "float",
+      "description": "Scaling factor for yields from harvesting activities. Higher values increase yields."
+    },
+    {
+      "setting": "HarvestHealthMultiplier",
+      "default": 1.0,
+      "value_type": "float",
+      "description": "Scaling factor for the durability of harvestable items. Higher values increase the number of strikes required to harvest."
+    },
+    {
+      "setting": "IgnoreLimitMaxStructuresInRangeTypeFlag",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, removes the limit on decorative structures (e.g., flags, signs)."
+    },
+    {
+      "setting": "ImplantSuicideCD",
+      "default": 28800,
+      "value_type": "float",
+      "description": "Defines the cooldown (in seconds) between uses of the implant's 'Respawn' feature."
+    },
+    {
+      "setting": "ItemStackSizeMultiplier",
+      "default": 1.0,
+      "value_type": "float",
+      "description": "Global multiplier for item stack sizes (applies to all items except those with a default stack size of 1)."
+    },
+    {
+      "setting": "KickIdlePlayersPeriod",
+      "default": 3600.0,
+      "value_type": "float",
+      "description": "Time (in seconds) after which inactive characters are kicked. Although defined as a float, it is suggested to use an integer."
+    },
+    {
+      "setting": "MaxGateFrameOnSaddles",
+      "default": 0,
+      "value_type": "integer",
+      "description": "Defines the maximum number of gateways allowed on platform saddles. A value of 0 disallows gateways."
+    },
+    {
+      "setting": "MaxHexagonsPerCharacter",
+      "default": 2000000000,
+      "value_type": "integer",
+      "description": "Specifies the maximum number of hexagons a character can accumulate. Officially set to 2500000."
+    },
+    {
+      "setting": "MaxPersonalTamedDinos",
+      "default": 0,
+      "value_type": "integer",
+      "description": "Sets a per-tribe tame limit (e.g., 500 for official PvE, 300 for official PvP). A default of 0 disables the limit."
+    },
+    {
+      "setting": "MaxPlatformSaddleStructureLimit",
+      "default": 75,
+      "value_type": "integer",
+      "description": "Changes the maximum number of platform saddles/rafts allowed. For example, 10 would restrict to 10 structures."
+    },
+    {
+      "setting": "MaxTamedDinos",
+      "default": 5000.0,
+      "value_type": "float",
+      "description": "Global cap for the maximum number of tamed creatures. Although defined as a float, it is suggested to treat it as an integer."
+    },
+    {
+      "setting": "MaxTamedDinos_SoftTameLimit",
+      "default": 5000,
+      "value_type": "integer",
+      "description": "Defines the soft tame limit for the server."
+    },
+    {
+      "setting": "MaxTamedDinos_SoftTameLimit_CountdownForDeletionDuration",
+      "default": 604800,
+      "value_type": "integer",
+      "description": "Time in seconds before tamed creatures above the soft tame limit are destroyed."
+    },
+    {
+      "setting": "MaxTrainCars",
+      "default": 8,
+      "value_type": "integer",
+      "description": "Defines the maximum number of train cars a train can have."
+    },
+    {
+      "setting": "MaxTributeCharacters",
+      "default": 10,
+      "value_type": "integer",
+      "description": "Specifies the number of slots for uploaded characters. Lower values will be reverted; increasing may risk data corruption."
+    },
+    {
+      "setting": "MaxTributeDinos",
+      "default": 20,
+      "value_type": "integer",
+      "description": "Specifies the number of slots for uploaded creatures. Lower values will be reverted; some suggest a safe cap is 273."
+    },
+    {
+      "setting": "MaxTributeItems",
+      "default": 50,
+      "value_type": "integer",
+      "description": "Specifies the number of slots for uploaded items/resources. Lower values will be reverted; some suggest a safe cap is 154."
+    },
+    {
+      "setting": "NightTimeSpeedScale",
+      "default": 1.0,
+      "value_type": "float",
+      "description": "Scaling factor for the passage of time during night. Lower values increase night length relative to day."
+    },
+    {
+      "setting": "NonPermanentDiseases",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, makes diseases that are normally permanent become temporary (lost upon respawn)."
+    },
+    {
+      "setting": "NPCNetworkStasisRangeScalePlayerCountStart",
+      "default": 0,
+      "value_type": "integer",
+      "description": "Minimum number of online players required for NPC Network Stasis Range scaling to take effect (INI only; official value is 24)."
+    },
+    {
+      "setting": "NPCNetworkStasisRangeScalePlayerCountEnd",
+      "default": 0,
+      "value_type": "integer",
+      "description": "Maximum number of online players for NPC Network Stasis Range scaling (INI only; official value is 70)."
+    },
+    {
+      "setting": "NPCNetworkStasisRangeScalePercentEnd",
+      "default": 0.55000001,
+      "value_type": "float",
+      "description": "Maximum scale percentage for NPC Network Stasis Range when the player count reaches the end value (INI only; official value is 0.5)."
+    },
+    {
+      "setting": "OnlyAutoDestroyCoreStructures",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, prevents auto-destruction of any non-core or non-foundation structures. (Used on Official PvE servers.)"
+    },
+    {
+      "setting": "OnlyDecayUnsnappedCoreStructures",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, only unsnapped core structures will decay, helping reduce spam of lone pillars or foundations."
+    },
+    {
+      "setting": "OverrideOfficialDifficulty",
+      "default": 0.0,
+      "value_type": "float",
+      "description": "Overrides the default server difficulty level. A value of 0.0 disables the override; a value of 5.0 will allow common creatures to spawn up to level 150."
+    },
+    {
+      "setting": "OverrideStructurePlatformPrevention",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, allows turrets to be built and function on platform saddles. (Note: In ShooterGameServer it's spelled with two 'r's.)"
+    },
+    {
+      "setting": "OxygenSwimSpeedStatMultiplier",
+      "default": 1.0,
+      "value_type": "float",
+      "description": "Sets how swim speed is multiplied by the level of oxygen spent. The value was reduced by 80% in patch 256.0."
+    },
+    {
+      "setting": "PerPlatformMaxStructuresMultiplier",
+      "default": 1.0,
+      "value_type": "float",
+      "description": "Multiplier (percentage scale) that increases the maximum number of items placeable on saddles and rafts."
+    },
+    {
+      "setting": "PersonalTamedDinosSaddleStructureCost",
+      "default": 0,
+      "value_type": "integer",
+      "description": "Determines how many 'tame creature slots' a platform saddle (with structures) will consume toward the tribe tame limit."
+    },
+    {
+      "setting": "PlatformSaddleBuildAreaBoundsMultiplier",
+      "default": 1.0,
+      "value_type": "float",
+      "description": "Multiplier that increases the build area bounds for platform saddles, allowing structures to be placed further away."
+    },
+    {
+      "setting": "PlayerCharacterFoodDrainMultiplier",
+      "default": 1.0,
+      "value_type": "float",
+      "description": "Scaling factor for player characters' food consumption; higher values cause faster hunger."
+    },
+    {
+      "setting": "PlayerCharacterHealthRecoveryMultiplier",
+      "default": 1.0,
+      "value_type": "float",
+      "description": "Scaling factor for player characters' health recovery; higher values increase the recovery rate."
+    },
+    {
+      "setting": "PlayerCharacterStaminaDrainMultiplier",
+      "default": 1.0,
+      "value_type": "float",
+      "description": "Scaling factor for player characters' stamina consumption; higher values result in faster stamina drain."
+    },
+    {
+      "setting": "PlayerCharacterWaterDrainMultiplier",
+      "default": 1.0,
+      "value_type": "float",
+      "description": "Scaling factor for player characters' water consumption; higher values cause faster thirst."
+    },
+    {
+      "setting": "PlayerDamageMultiplier",
+      "default": 1.0,
+      "value_type": "float",
+      "description": "Scaling factor for the damage players deal. Higher values increase damage; lower values decrease it."
+    },
+    {
+      "setting": "PlayerResistanceMultiplier",
+      "default": 1.0,
+      "value_type": "float",
+      "description": "Scaling factor for the resistance to damage players receive. A value of 0.5 means half damage taken; 2.0 means double damage."
+    },
+    {
+      "setting": "PreventDiseases",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, prevents diseases from being permanent."
+    },
+    {
+      "setting": "PreventMateBoost",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, disables creature mate boosting."
+    },
+    {
+      "setting": "PreventOfflinePvP",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, enables Offline Raiding Prevention (ORP), making tribe characters, creatures, and structures invulnerable when all tribe members are offline. Works for both PvE and PvP; it is recommended to set a minimum interval with PreventOfflinePvPInterval."
+    },
+    {
+      "setting": "PreventOfflinePvPInterval",
+      "default": 0.0,
+      "value_type": "float",
+      "description": "Time in seconds to wait before ORP becomes active for a tribe/players and related entities. Although defined as a float, an integer is suggested."
+    },
+    {
+      "setting": "PreventSpawnAnimations",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, player characters respawn without the wake-up animation."
+    },
+    {
+      "setting": "PreventTribeAlliances",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, prevents tribes from forming alliances."
+    },
+    {
+      "setting": "ProximityChat",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, only players near each other can see their chat messages."
+    },
+    {
+      "setting": "PvEAllowStructuresAtSupplyDrops",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, allows building near supply drop points in PvE mode."
+    },
+    {
+      "setting": "PvEDinoDecayPeriodMultiplier",
+      "default": 1.0,
+      "value_type": "float",
+      "description": "Scaling factor for the auto-decay period of creatures in PvE; lower values cause faster decay. Requires DisableDinoDecayPvE to be false."
+    },
+    {
+      "setting": "PvEStructureDecayPeriodMultiplier",
+      "default": 1.0,
+      "value_type": "float",
+      "description": "Scaling factor for structure decay times; for example, 2.0 doubles the decay time and 0.5 halves it. Applies in both PvP and PvE when enabled."
+    },
+    {
+      "setting": "PvPDinoDecay",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, enables creature decay in PvP mode while Offline Raid Prevention is active."
+    },
+    {
+      "setting": "PvPStructureDecay",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, enables structure decay on PvP servers while Offline Raid Prevention is active."
+    },
+    {
+      "setting": "RaidDinoCharacterFoodDrainMultiplier",
+      "default": 1.0,
+      "value_type": "float",
+      "description": "Scaling factor for the food drain rate on raid dinos (e.g., Titanosaurus)."
+    },
+    {
+      "setting": "RandomSupplyCratePoints",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, supply drops spawn at random locations. (May cause artifacts on Ragnarok.)"
+    },
+    {
+      "setting": "RCONEnabled",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, enables RCON functionality. Requires RCONPort and ServerAdminPassword to be set."
+    },
+    {
+      "setting": "RCONPort",
+      "default": 27020,
+      "value_type": "integer",
+      "description": "Specifies the TCP port for RCON."
+    },
+    {
+      "setting": "RCONServerGameLogBuffer",
+      "default": 600.0,
+      "value_type": "float",
+      "description": "Specifies the number of game log lines sent over RCON. Though coded as a float, it should be treated as an integer."
+    },
+    {
+      "setting": "ResourcesRespawnPeriodMultiplier",
+      "default": 1.0,
+      "value_type": "float",
+      "description": "Scaling factor for the respawn rate of resource nodes; lower values cause more frequent respawns."
+    },
+    {
+      "setting": "ServerAdminPassword",
+      "default": null,
+      "value_type": "string",
+      "description": "If specified, players must enter this password via the in-game console to access administrator commands. Do not use quotes."
+    },
+    {
+      "setting": "ServerAutoForceRespawnWildDinosInterval",
+      "default": 0.0,
+      "value_type": "float",
+      "description": "Forces a re-spawn of all wild creatures on server restart after the specified number of seconds; 0.0 disables it."
+    },
+    {
+      "setting": "ServerCrosshair",
+      "default": true,
+      "value_type": "boolean",
+      "description": "If False, disables the server crosshair."
+    },
+    {
+      "setting": "ServerForceNoHUD",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, forces the HUD to be disabled for non-tribe owned NPCs."
+    },
+    {
+      "setting": "ServerHardcore",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, enables Hardcore mode, causing player characters to revert to level 1 upon death."
+    },
+    {
+      "setting": "ServerPassword",
+      "default": null,
+      "value_type": "string",
+      "description": "If specified, players must enter this password to join the server. Do not use quotes."
+    },
+    {
+      "setting": "serverPVE",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, disables PvP and enables PvE mode."
+    },
+    {
+      "setting": "ShowFloatingDamageText",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, enables RPG-style popup damage text."
+    },
+    {
+      "setting": "ShowMapPlayerLocation",
+      "default": true,
+      "value_type": "boolean",
+      "description": "If False, hides players' precise map locations."
+    },
+    {
+      "setting": "SpectatorPassword",
+      "default": null,
+      "value_type": "string",
+      "description": "Password for non-admin spectators; clients use console commands 'requestspectator <password>' and 'stopspectating'. Do not use quotes."
+    },
+    {
+      "setting": "StructureDamageMultiplier",
+      "default": 1.0,
+      "value_type": "float",
+      "description": "Scaling factor for the damage that structures (e.g., spiked walls) deal. Higher values increase damage; lower values decrease it."
+    },
+    {
+      "setting": "StructurePickupHoldDuration",
+      "default": 0.5,
+      "value_type": "float",
+      "description": "Specifies the hold duration for quick structure pickup; a value of 0 results in instant pickup."
+    },
+    {
+      "setting": "StructurePickupTimeAfterPlacement",
+      "default": 30.0,
+      "value_type": "float",
+      "description": "Time in seconds after placement during which quick pickup is available."
+    },
+    {
+      "setting": "StructurePreventResourceRadiusMultiplier",
+      "default": 1.0,
+      "value_type": "float",
+      "description": "Multiplier equivalent to ResourceNoReplenishRadiusStructures in Game.ini. Applied in addition to INI settings; useful when the Game.ini cannot be modified."
+    },
+    {
+      "setting": "StructureResistanceMultiplier",
+      "default": 1.0,
+      "value_type": "float",
+      "description": "Scaling factor for the resistance of structures to damage. Higher values decrease resistance (increasing damage taken); lower values increase resistance."
+    },
+    {
+      "setting": "TamedDinoDamageMultiplier",
+      "default": 1.0,
+      "value_type": "float",
+      "description": "Scaling factor for damage dealt by tamed creatures. Higher values increase damage; lower values decrease it."
+    },
+    {
+      "setting": "TamedDinoResistanceMultiplier",
+      "default": 1.0,
+      "value_type": "float",
+      "description": "Scaling factor for the resistance of tamed creatures. Higher values decrease resistance (increasing damage taken); lower values increase it."
+    },
+    {
+      "setting": "TamingSpeedMultiplier",
+      "default": 1.0,
+      "value_type": "float",
+      "description": "Scaling factor for creature taming speed. Higher values speed up taming."
+    },
+    {
+      "setting": "TheMaxStructuresInRange",
+      "default": 10500,
+      "value_type": "integer",
+      "description": "Specifies the maximum number of structures that can be built within a certain range. Replaces the old NewMaxStructuresInRange value."
+    },
+    {
+      "setting": "TribeLogDestroyedEnemyStructures",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, logs enemy structure destruction events in the tribe logs."
+    },
+    {
+      "setting": "TribeNameChangeCooldown",
+      "default": 15.0,
+      "value_type": "float",
+      "description": "Cooldown time (in minutes) between tribe name changes. Official servers use 172800.0 (2 days)."
+    },
+    {
+      "setting": "UseFjordurTraversalBuff",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, enables the Fjordur biome teleport when holding R, as used on official PvE servers."
+    },
+    {
+      "setting": "UseOptimizedHarvestingHealth",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, enables an optimized harvesting algorithm with a high HarvestAmountMultiplier but fewer rare items. Suggested for use when Tek Stryder causes lag spikes."
+    },
+    {
+      "setting": "XPMultiplier",
+      "default": 1.0,
+      "value_type": "float",
+      "description": "Scaling factor for experience gained by players, tribes, and tames. Higher values increase XP, lower values decrease it. (Note: In patch 313.5 an additional multiplier of 4 was applied.)"
+    },
+    {
+      "setting": "CrossARKAllowForeignDinoDownloads",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, enables non-native creature tribute downloads on Aberration."
+    },
+    {
+      "setting": "MinimumDinoReuploadInterval",
+      "default": 0.0,
+      "value_type": "float",
+      "description": "Specifies the cooldown in seconds between allowed creature re-uploads (default is 43200 seconds or 12 hours on official servers)."
+    },
+    {
+      "setting": "noTributeDownloads",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, prevents CrossARK data downloads in Cross-ARK Data Transfer."
+    },
+    {
+      "setting": "PreventDownloadDinos",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, prevents creature downloads from ARK Data in Cross-ARK Data Transfer."
+    },
+    {
+      "setting": "PreventDownloadItems",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, prevents item downloads from ARK Data in Cross-ARK Data Transfer."
+    },
+    {
+      "setting": "PreventDownloadSurvivors",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, prevents survivor downloads from ARK Data in Cross-ARK Data Transfer."
+    },
+    {
+      "setting": "PreventUploadDinos",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, prevents creature uploads to ARK Data in Cross-ARK Data Transfer."
+    },
+    {
+      "setting": "PreventUploadItems",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, prevents item uploads to ARK Data in Cross-ARK Data Transfer."
+    },
+    {
+      "setting": "PreventUploadSurvivors",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, prevents survivor uploads to ARK Data in Cross-ARK Data Transfer."
+    },
+    {
+      "setting": "TributeCharacterExpirationSeconds",
+      "default": 0,
+      "value_type": "integer",
+      "description": "Sets the expiration timer in seconds for uploaded survivors in ARK Data. A default or negative value means no expiration. It is recommended to use the same value across servers in a cluster."
+    },
+    {
+      "setting": "TributeDinoExpirationSeconds",
+      "default": 86400,
+      "value_type": "integer",
+      "description": "Sets the expiration timer in seconds for uploaded tames in ARK Data. A value of 0 or less reverts to default. Use the same value across servers in a cluster to avoid data deletion."
+    },
+    {
+      "setting": "TributeItemExpirationSeconds",
+      "default": 86400,
+      "value_type": "integer",
+      "description": "Sets the expiration timer in seconds for uploaded items in ARK Data. A value of 0 or less reverts to default. Use the same value across servers in a cluster to avoid data deletion."
+    },
+    {
+      "setting": "CryopodNerfDamageMult",
+      "default": 0.0099999998,
+      "value_type": "float",
+      "description": "Reduces the damage dealt by a creature after being deployed from a cryopod as a percentage of total damage. For example, 0.01 means 99% of the damage is removed. (Official value is 0.1.)"
+    },
+    {
+      "setting": "CryopodNerfDuration",
+      "default": 0.0,
+      "value_type": "integer",
+      "description": "Duration in seconds for which the cryopod nerf (or 'Cryosickness') lasts after deployment. Although defined as float, it is suggested to use an integer. (Official value is 10.0.)"
+    },
+    {
+      "setting": "CryopodNerfIncomingDamageMultPercent",
+      "default": 0.0,
+      "value_type": "float",
+      "description": "Increases the damage taken by a creature after deployment from a cryopod, as a percentage of total damage received, for the duration specified. For example, 0.25 means a 25% increase. (Official value is 0.25.)"
+    },
+    {
+      "setting": "EnableCryopodNerf",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, enables cryopod nerf behavior. When set, CryopodNerfDuration and CryopodNerfIncomingDamageMultPercent must be specified (or default to 0)."
+    },
+    {
+      "setting": "EnableCryoSicknessPVE",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, enables the cryopod cooldown timer when deploying a creature."
+    },
+    {
+      "setting": "BadWordListURL",
+      "default": "http://arkdedicated.com/badwords.txt",
+      "value_type": "string (URL)",
+      "description": "URL for the server's bad words list. For ARK: Survival Evolved, only the HTTP protocol is supported (HTTPS will not work)."
+    },
+    {
+      "setting": "BadWordWhiteListURL",
+      "default": "http://arkdedicated.com/goodwords.txt",
+      "value_type": "string (URL)",
+      "description": "URL for the server's good words list. For ARK: Survival Evolved, only the HTTP protocol is supported (HTTPS will not work)."
+    },
+    {
+      "setting": "bFilterCharacterNames",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, filters out character names based on the bad/good words list."
+    },
+    {
+      "setting": "bFilterChat",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, filters chat messages based on the bad/good words list."
+    },
+    {
+      "setting": "bFilterTribeNames",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, filters tribe names based on the bad/good words list."
+    },
+    {
+      "setting": "AdminListURL",
+      "default": "N/A",
+      "value_type": "string (URL)",
+      "description": "Alternative to AllowedCheaterAccountIDs.txt (see Administrator Whitelisting) using a web resource. The update interval is defined by UpdateAllowedCheatersInterval. (Undocumented by Wildcard.)"
+    },
+    {
+      "setting": "AllowedCheatersURL",
+      "default": "N/A",
+      "value_type": "string (URL)",
+      "description": "Alternative to AllowedCheaterSteamIDs.txt (see Administrator Whitelisting) using a web resource (e.g., official uses http://arkdedicated.com/globaladmins.txt). The update interval is defined by UpdateAllowedCheatersInterval. Supports HTTP only. (Undocumented by Wildcard.)"
+    },
+    {
+      "setting": "AutoRestartIntervalSeconds",
+      "default": "Unknown",
+      "value_type": "float",
+      "description": "Defines the time (in seconds) after which the server will automatically restart. (Appears to shut off the server instead of restarting properly.)"
+    },
+    {
+      "setting": "ChatLogFileSplitIntervalSeconds",
+      "default": 86400,
+      "value_type": "integer",
+      "description": "Controls how often (in seconds) the chat log file is split. Cannot be set lower than 45 (will default to 45 if lower) and should be 0 only on official servers. (Undocumented by Wildcard.)"
+    },
+    {
+      "setting": "ChatLogFlushIntervalSeconds",
+      "default": 86400,
+      "value_type": "integer",
+      "description": "Controls the interval (in seconds) at which the chat log is flushed to file. Cannot be set lower than 15 (defaults to 15 if lower) and should be 0 only on official servers. (Undocumented by Wildcard.)"
+    },
+    {
+      "setting": "ChatLogMaxAgeInDays",
+      "default": 5,
+      "value_type": "integer",
+      "description": "Controls the maximum age (in days) of the chat log. Setting a negative value results in -1 (virtually infinite), and 0 should be used only on official servers. (Undocumented by Wildcard.)"
+    },
+    {
+      "setting": "DontRestoreBackup",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True and -DisableDupeLogDeletes is present, prevents the server from automatically restoring a backup in case of a corrupted save. (Undocumented by Wildcard.)"
+    },
+    {
+      "setting": "EnableAFKKickPlayerCountPercent",
+      "default": 0.0,
+      "value_type": "float",
+      "description": "Enables idle timeout only if the percentage of online players (relative to MaxPlayers) reaches this value (normalized between 0 and 1.0). Officially set to approximately 0.9. (Undocumented by Wildcard.)"
+    },
+    {
+      "setting": "EnableMeshBitingProtection",
+      "default": true,
+      "value_type": "boolean",
+      "description": "If False, disables mesh biting protection. (Undocumented by Wildcard.)"
+    },
+    {
+      "setting": "FreezeReaperPregnancy",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, freezes the Reaper King pregnancy timer and experience gain. (Undocumented by Wildcard.)"
+    },
+    {
+      "setting": "LogChatMessages",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, enables advanced chat logging. Chat logs are saved in ShooterGame/Saved/Logs/ChatLogs/<SessionName>/ in JSON format. Files are split and flushed based on ChatLogFileSplitIntervalSeconds and ChatLogFlushIntervalSeconds. <SessionName> is written without spaces. (Undocumented by Wildcard.)"
+    },
+    {
+      "setting": "MaxStructuresInSmallRadius",
+      "default": 0,
+      "value_type": "integer",
+      "description": "Defines the maximum number of structures allowed within a certain radius (specified by RadiusStructuresInSmallRadius) from a player's position. Official value is 40. (Undocumented by Wildcard.)"
+    },
+    {
+      "setting": "MaxStructuresToProcess",
+      "default": 0,
+      "value_type": "integer",
+      "description": "Controls the maximum batch size of structures to process per server tick (for culling, building graphs, etc.). A value of 0 forces processing of all queued structures; official value is 5000. (Undocumented by Wildcard.)"
+    },
+    {
+      "setting": "PreventOutOfTribePinCodeUse",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, prevents players outside of a tribe from using pin codes on structures (doors, elevators, storage boxes, etc.). (Undocumented by Wildcard.)"
+    },
+    {
+      "setting": "RadiusStructuresInSmallRadius",
+      "default": 0.0,
+      "value_type": "float",
+      "description": "Defines the small radius (in Unreal Units) used for limiting structures (used in conjunction with MaxStructuresInSmallRadius). Official value is 225.0. (Undocumented by Wildcard.)"
+    },
+    {
+      "setting": "ServerEnableMeshChecking",
+      "default": false,
+      "value_type": "boolean",
+      "description": "Involved in foliage repopulation; takes no effect if -forcedisablemeshchecking is set. Enabled on official servers. (Undocumented by Wildcard.)"
+    },
+    {
+      "setting": "TribeMergeAllowed",
+      "default": true,
+      "value_type": "boolean",
+      "description": "If False, prevents tribes from merging. (Undocumented by Wildcard.)"
+    },
+    {
+      "setting": "TribeMergeCooldown",
+      "default": 0.0,
+      "value_type": "float",
+      "description": "Cooldown (in seconds) between tribe mergers. Official value is 86400.0. (Undocumented by Wildcard.)"
+    },
+    {
+      "setting": "UpdateAllowedCheatersInterval",
+      "default": 600.0,
+      "value_type": "float",
+      "description": "Specifies the interval (in seconds) at which the remote admin list (linked via AllowedCheatersURL) is queried for updates. Values less than 3.0 will be reverted to 3.0. (Undocumented by Wildcard.)"
+    },
+    {
+      "setting": "UseCharacterTracker",
+      "default": false,
+      "value_type": "boolean",
+      "description": "Enables character tracking. Alternatively, this can be set via the -disableCharacterTracker command line argument, which takes precedence over this setting. (Undocumented by Wildcard.)"
+    },
+    {
+      "setting": "UseExclusiveList",
+      "default": false,
+      "value_type": "boolean",
+      "description": "If True, allows behavior similar to -exclusivejoin. (Undocumented by Wildcard.)"
+    }
+  ]
+}

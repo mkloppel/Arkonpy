@@ -1,0 +1,16 @@
+{
+  "default file locations": {
+    "Windows": [
+      {
+        "file": "GameUserSettings.ini",
+        "path": "ShooterGame\\Saved\\Config\\WindowsServer\\",
+        "description": "Default path for GameUserSettings.ini on Windows servers."
+      },
+      {
+        "file": "Game.ini",
+        "path": "ShooterGame\\Saved\\Config\\WindowsServer\\",
+        "description": "Default path for Game.ini on Windows servers."
+      }
+    ]
+  }
+}

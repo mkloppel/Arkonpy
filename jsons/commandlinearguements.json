@@ -1,0 +1,429 @@
+{
+  "command line arguments": [
+    {
+      "argument": "-AllowFlyerSpeedLeveling",
+      "description": "Enables Level Up for Flyer Movement Speed. Note: alternatively, it can be enabled by adding bAllowFlyerSpeedLeveling=True to the Game.ini file."
+    },
+    {
+      "argument": "?AltSaveDirectoryName=<savedir_name>",
+      "description": "Allows you to specify a custom directory name for server world-save. Usually used to manage clusters; see the Cross-ARK Data Transfer section. ARK: Survival Ascended: Note that it still uses the <savedir_name>/<map_name> directory structure."
+    },
+    {
+      "argument": "-AlwaysTickDedicatedSkeletalMeshes",
+      "description": "Disables optimization that would dynamically not tick idle/inactive creature animations on the dedicated server based on server frame rate (only becomes active when the server is low FPS). Side-effects can include inaccurate collisions for idle creatures on the client versus the server."
+    },
+    {
+      "argument": "-AutoDestroyStructures",
+      "description": "Enables auto-destruction of old structures. The timer can be adjusted with the AutoDestroyOldStructuresMultiplier option in GameUserSettings.ini under the [ServerSettings] section."
+    },
+    {
+      "argument": "-automanagedmods",
+      "description": "Steam only: automatic mod download/installation/updating. Mod IDs are listed in Game.ini under the [ModInstaller] section."
+    },
+    {
+      "argument": "-crossplay",
+      "description": "Enables crossplay (i.e.: EPIC and Steam) on the dedicated server. Note: PublicIPForEpic must also be set. (ARK: Survival Ascended: Obsolete—use the -ServerPlatform argument instead.)"
+    },
+    {
+      "argument": "-culture=<lang_code>",
+      "description": "Overrides the server output language (does not override clients’ language). Supported language codes include: ca, cs, da, de, en, es, eu, fi, fr, hu, it, ja, ka, ko, nl, pl, pt_BR, ru, sv, th, tr, zh, zh-Hans-CN, zh-TW."
+    },
+    {
+      "argument": "-DisableCustomCosmetics",
+      "description": "Disables the Custom Cosmetic system, which allows players to use and display special mods (skins) that are downloaded automatically by clients."
+    },
+    {
+      "argument": "-disabledinonetrangescaling",
+      "description": "Disables the creature network replication range optimization. On dedicated servers, replication range is normally scaled based on connected players to improve performance; disabling it stops that scaling."
+    },
+    {
+      "argument": "-DisableCustomFoldersInTributeInventories",
+      "description": "Disables the creation of folders in Tribute inventories."
+    },
+    {
+      "argument": "-DisableRailgunPVP",
+      "description": "Disables the Tek Railgun on PvP servers (this argument is not added to the command line on official servers)."
+    },
+    {
+      "argument": "-EasterColors",
+      "description": "Enables a chance for Easter colors when creatures spawn."
+    },
+    {
+      "argument": "-EnableIdlePlayerKick",
+      "description": "Causes characters that have not moved or interacted within the period defined by KickIdlePlayersPeriod (in GameUserSettings.ini) to be kicked."
+    },
+    {
+      "argument": "-epiconly",
+      "description": "Enables Epic Game Store–only players to connect to the dedicated server. (ARK: Survival Ascended: Obsolete since ASA is not available on Epic.)"
+    },
+    {
+      "argument": "?EventColorsChanceOverride=<float>",
+      "description": "Takes a floating-point value between 0 and 1.0 (1 = 100% chance) for color override on freshly spawned wild creatures. (You can use the console command 'Cheat DestroyWildDinos' to force a respawn with the new chance.)"
+    },
+    {
+      "argument": "-exclusivejoin",
+      "description": "Activates a whitelist-only mode on the server, allowing players to join only if added to the allow list (see Ark IDs for more details)."
+    },
+    {
+      "argument": "-ForceAllowCaveFlyers",
+      "description": "Forces flyer creatures to be allowed into caves (flyers are normally able to go into caves on custom maps by default)."
+    },
+    {
+      "argument": "-ForceRespawnDinos",
+      "description": "Destroys all wild creatures on server startup (only affects wild creatures that are not currently tamed)."
+    },
+    {
+      "argument": "?GameModIds=<ModID1>[,<ModID2>[...]]",
+      "description": "Steam only. Specifies the order and selection of mods to be loaded, separated by commas. Mods are loaded with descending priority (leftmost is highest priority). ARK: Survival Ascended: Obsolete—use the -mods argument instead."
+    },
+    {
+      "argument": "-GBUsageToForceRestart=<value>",
+      "description": "Enables out-of-memory protection: if the server reaches the specified memory (in gigabytes), it forces a world save and restarts the server. Setting to 0 disables this feature. Default value: 35."
+    },
+    {
+      "argument": "-imprintlimit=101",
+      "description": "Automatically destroys creatures exceeding the imprinting bonus limit (expressed in %). A value of 101 is recommended to catch potential floating-point errors with custom imprinting rates."
+    },
+    {
+      "argument": "-insecure",
+      "description": "Disables the Valve Anti-Cheat (VAC) system."
+    },
+    {
+      "argument": "-MapModID=<ModID>",
+      "description": "Allows dedicated servers to load custom maps via a mod ID (the Steam Workshop ID) instead of the map name. ActiveMods must also be set in GameUserSettings.ini. (ARK: Survival Ascended: Obsolete—use the -mods argument instead.)"
+    },
+    {
+      "argument": "-MaxNumOfSaveBackups=<integer>",
+      "description": "Sets the maximum number of save backups kept in the save folder. Oldest backups are deleted when new ones are created. Default value is 20; unofficial admins might set this to 0 if using alternative backup mechanisms."
+    },
+    {
+      "argument": "?MapPlayerLocation=false",
+      "description": "Equivalent to the ShowMapPlayerLocation setting in GameUserSettings.ini. Using this option causes the server to write the ShowMapPlayerLocation entry."
+    },
+    {
+      "argument": "-MinimumTimeBetweenInventoryRetrieval=<seconds>",
+      "description": "Sets the cooldown (in seconds) for inventory retrieval (for example, Fjordhawk cooldown) when a player is killed. Default value: 3600."
+    },
+    {
+      "argument": "-mods=<ModId1>[,<ModId2>[...]]",
+      "description": "Specifies CurseForge Mod Project IDs. Mods are updated automatically when starting the server. Note: Mods disabled with the -passivemods option should be listed first."
+    },
+    {
+      "argument": "-MULTIHOME",
+      "description": "Enables multihoming. When using this, you must also specify MULTIHOME=<IP_ADDRESS> in GameUserSettings.ini under [SessionSettings] or on the command line."
+    },
+    {
+      "argument": "-newsaveformat",
+      "description": "Enables the new save format (version 11), which is faster at saving cryopods and uses less storage. Use this only if necessary and along with -usestore to correctly load tribe ownership for Official 2023 Server saves."
+    },
+    {
+      "argument": "?NewYear1UTC=<epoch time>",
+      "description": "Sets a timestamp (use https://www.epochconverter.com) for the New Year event. Must be used with -NewYearEvent and cannot be set before Midnight EST on January 1st."
+    },
+    {
+      "argument": "?NewYear2UTC=<epoch time>",
+      "description": "Sets a second timestamp (use https://www.epochconverter.com) for the New Year event. Must be used with -NewYearEvent and cannot be set before Midnight EST on January 1st."
+    },
+    {
+      "argument": "-NewYearEvent",
+      "description": "Enables the ARK: Happy New Year! event, which automatically starts at Midnight EST and Noon EST on January 1st (only available around the scheduled event time)."
+    },
+    {
+      "argument": "-noantispeedhack",
+      "description": "Disables the anti-speedhack detection (which is enabled by default)."
+    },
+    {
+      "argument": "-NoBattlEye",
+      "description": "Runs the server without BattleEye."
+    },
+    {
+      "argument": "-nocombineclientmoves",
+      "description": "Disables the server player move physics optimization that is enabled by default (which improves performance)."
+    },
+    {
+      "argument": "-NoDinos",
+      "description": "Prevents wild creatures from being spawned. (Note: previously spawned wild creatures will remain until destroyed via console command 'cheat destroywilddinos'.)"
+    },
+    {
+      "argument": "-NoHangDetection",
+      "description": "Prevents the server from shutting down if startup takes more than 2700 seconds (45 minutes). Note: this disables further hang detection."
+    },
+    {
+      "argument": "-NotifyAdminCommandsInChat",
+      "description": "Displays cheat and admincheat commands to admin players only in the global chat (not to be confused with AdminLogging, which shows them to all players)."
+    },
+    {
+      "argument": "-noundermeshchecking",
+      "description": "Disables the anti-meshing system entirely."
+    },
+    {
+      "argument": "-noundermeshkilling",
+      "description": "Disables the anti-meshing player kill feature (while still allowing teleportation)."
+    },
+    {
+      "argument": "-NoWildBabies",
+      "description": "Disables the spawning of wild babies."
+    },
+    {
+      "argument": "-passivemods=<ModId1>[,<ModId2>[...]]",
+      "description": "Disables a mod's functionality (while still loading its data) temporarily. This must be used together with -mods, with the disabled mods listed first. Only the ARK: Winter Wonderland 2023 mod (927090) is documented as supporting this option."
+    },
+    {
+      "argument": "-port=<Server Port>",
+      "description": "Specifies the server port for hosting the dedicated server (useful if running on a port other than the default 7777)."
+    },
+    {
+      "argument": "-PublicIPForEpic=<IPAddress>",
+      "description": "Specifies the public IP that EGS clients will use to connect. If not set and -MULTIHOME is used, EGS clients will connect using the multihome IP. Make sure this is a public IP (e.g., WAN or external)."
+    },
+    {
+      "argument": "-pvedisallowtribewar",
+      "description": "Prevents tribes in PvE mode from officially declaring war on each other for a mutually agreed period. Alternatively, use the Game.ini setting bPvEAllowTribeWar."
+    },
+    {
+      "argument": "-SecureSendArKPayload",
+      "description": "Protects against the creature upload issue. Note that it may impact some mods."
+    },
+    {
+      "argument": "-ServerAllowAnsel",
+      "description": "Allows clients to use NVIDIA Ansel on the server."
+    },
+    {
+      "argument": "-servergamelog",
+      "description": "Enables server admin logs (with RCON support). Use the RCON command 'getgamelog' to print entries and check logs in the \\Logs folder. Adjust the RCON buffer with RCONServerGameLogBuffer=600."
+    },
+    {
+      "argument": "-servergamelogincludetribelogs",
+      "description": "Includes tribe logs in the normal server game logs. Required for retrieving logs from RCON and for displaying them in the console."
+    },
+    {
+      "argument": "-ServerRCONOutputTribeLogs",
+      "description": "Includes tribe logs in the RCON output (retrievable via the 'GetGameLog' console command). Requires -servergamelogincludetribelogs."
+    },
+    {
+      "argument": "-speedhackbias=<value>",
+      "description": "Applies a bias to counter speedhack issues. Default value: 1.0."
+    },
+    {
+      "argument": "-StasisKeepControllers",
+      "description": "Keeps Unreal Engine actors' AI controller objects in memory when actors go into stasis, improving performance at the cost of higher memory usage on large maps."
+    },
+    {
+      "argument": "-structurememopts",
+      "description": "Enables structure memory optimizations. (Avoid using with structure-related mods until they are updated, as it may break mod structure snap points.)"
+    },
+    {
+      "argument": "-TotalConversionMod=<ModID>",
+      "description": "Specifies a total conversion mod (e.g., Primitive Plus). Alternatively, set ActiveTotalConversion=<ModID> in GameUserSettings.ini."
+    },
+    {
+      "argument": "-UseDynamicConfig",
+      "description": "Enables the use of dynamic config. If no CustomDynamicConfigUrl is provided, the server uses the default config for the platform. The config is checked every time the world is (auto)saved, unless force-updated with ForceUpdateDynamicConfig."
+    },
+    {
+      "argument": "-UseItemDupeCheck",
+      "description": "Enables additional protection against item duplication. (May impact some mods.)"
+    },
+    {
+      "argument": "-UseSecureSpawnRules",
+      "description": "Enables additional protections for item and creature spawning. Note: This protection is disabled by default since version 349.27 due to prior server crashes."
+    },
+    {
+      "argument": "-usestore",
+      "description": "Alters the behavior of saving player character data. Character profiles are merged with the map save file and tribe profiles use a different format (.arktributetribe). Use with -converttostore to convert previous non-stored data and correctly load Official 2023 Server saves backups along with -newsaveformat."
+    },
+    {
+      "argument": "-UseStructureStasisGrid",
+      "description": "Enables the structure stasis grid to improve server performance on large bases with many players."
+    },
+    {
+      "argument": "-UseVivox",
+      "description": "Enables Vivox voice chat on Steam-only servers (default for EPIC servers, but can be enabled on Steam servers as well)."
+    },
+    {
+      "argument": "-webalarm",
+      "description": "Activates web alarms when important tribe events occur (e.g., Tripwire Alarms, birth of babies). See Web Notifications for details."
+    },
+    {
+      "argument": "-WinLiveMaxPlayers=<integer>",
+      "description": "Sets the maximum number of players for the server, replacing the MaxPlayers setting from GameUserSettings.ini. Default value: 70."
+    },
+    {
+        "argument": "-ClusterDirOverride=<PATH>",
+        "description": "Specifies cross-server storage location for Cross-ARK Data Transfer. Requires also -clusterid=<CLUSTER_NAME> option to specify the cluster ID."
+      },
+      {
+        "argument": "-clusterid=<CLUSTER_NAME>",
+        "description": "Specifies the cluster name ID to allow Cross-ARK Data Transfer."
+      },
+      {
+        "argument": "-NoTransferFromFiltering",
+        "description": "Prevents ARK Data usage between single player and servers that do not have a cluster ID. Even with a cluster ID set, it is suggested to keep this option to completely disable the data transfer code path."
+      },
+      {
+        "argument": "-AllowChatSpam",
+        "description": "Allows players to spam messages in server chat. Note: It may interfere with external plugins enabling cross-map chat. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-BackupTransferPlayerDatas",
+        "description": "Fully mimics official (non-legacy) server handling of player character data by adding permanent character profile backup files separate from the world-save. Requires -usestore. Must be used to fully re-enable character profile backups when using Official 2023 Server saves backups. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-BattlEyeServerRecheck",
+        "description": "Adds an extra check on every server tick for BattleEye service status. Used in official clusters. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-converttostore",
+        "description": "Converts non-stored data (the default save behavior of unofficial and legacy servers) to stored data (the default for official non-legacy servers) at the next world-save. It does not delete older character profile saves. Requires -usestore. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-CustomAdminCommandTrackingURL=<URL>",
+        "description": "Allows the server to specify a custom URL to post admin command tracking. Supports HTTP only (HTTPS not supported). If empty, metrics are written to ArkCustomAdminCommandTrackingURL.txt in the game save directory. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-CustomMerticsURL=<URL>",
+        "description": "Allows the server to specify a custom URL to post server metrics statistics. Supports HTTP only (HTTPS not supported). If empty, metrics are written to ArkCustomMetricsURL.txt in the game save directory. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-CustomNotificationURL=<URL>",
+        "description": "Allows the server to specify a custom URL for notification broadcasts via the server message feature. Supports HTTP only (HTTPS not supported). Used in official clusters (e.g., http://arkdedicated.com/pcnotification.html). (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-dedihibernation",
+        "description": "Forces wild creatures to spawn in hibernation mode. Requires that -preventhibernation is not set (which has no effect in dedicated servers). (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-disableCharacterTracker",
+        "description": "Disables character tracking. Alternatively configurable via UseCharacterTracker in GameUserSettings.ini under [ServerSettings]; the command line option takes precedence. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-DisableDupeLogDeletes",
+        "description": "Prevents -ForceDupeLog from taking effect. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-DormancyNetMultiplier=<float>",
+        "description": "Multiplier for the dormancy rate controlling when an NPC enters low network bandwidth dormant mode. If the value is ≤ 1.0, -nodormancythrottling is required. Default is 1.0. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-EnableOfficialOnlyVersioningCode",
+        "description": "Mimics the official versioning code-path for ARK data items upload/download behavior, deleting items if there is a version mismatch. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-EnableSteelShield",
+        "description": "Enables SteelShield anti-DDOS protection. Only effective when the server is hosted by Nitrado. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-EnableVictoryCoreDupeCheck",
+        "description": "Enables an extra anti-duping check on tamed creatures. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-forcedisablemeshchecking",
+        "description": "Disables mesh checking on foliage repopulation. Not set on official servers. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-ForceDupeLog",
+        "description": "Forces the generation of dupe logs. Requires that -DisableDupeLogDeletes is not set; enabled by default on official servers. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-forceuseperfthreads",
+        "description": "Forces the use of performance threads. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-ignoredupeditems",
+        "description": "If a duped item is detected in an inventory, it will be ignored and not removed. This does not disable duped item checks. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-ip=<ipv4_address>",
+        "description": "Option used in Nitrado server setups. Expected to work in a -MULTIHOME context. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-MaxConnectionsPerIP=<integer>",
+        "description": "Sets the maximum number of users that can connect from the same IP simultaneously. Default is -1 (virtually unlimited). Exceeding this limit causes subsequent connection attempts from that IP to timeout. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-NitradoQueryPort",
+        "description": "Specifics unknown; used in Nitrado server setups. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-nitradotest2",
+        "description": "Limits the tick-rate to 3 when no players are connected. This reduces CPU usage for large worlds but may affect responsiveness. Appears to be an internal test; use at your own risk. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-NoAI",
+        "description": "Disables adding AI controllers to creatures. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-NoDinosExceptForcedSpawn",
+        "description": "Prevents wild creatures from spawning, except for forced spawns. Cannot be used with -NoDinos. Creatures already present before using this option will not be automatically destroyed (use 'cheat destroywilddinos'). (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-NoDinosExceptStreamingSpawn",
+        "description": "Prevents wild creatures from spawning, except for streaming spawns. Cannot be used with -NoDinos or -NoDinosExceptForcedSpawn; disables -NoDinosExceptManualSpawn and -NoDinosExceptWaterSpawn. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-NoDinosExceptManualSpawn",
+        "description": "Prevents wild creatures from spawning, except for manual spawns. Cannot be used with -NoDinos, -NoDinosExceptForcedSpawn, or -NoDinosExceptStreamingSpawn; disables -NoDinosExceptWaterSpawn. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-NoDinosExceptWaterSpawn",
+        "description": "Prevents wild creatures from spawning, except for water spawns. Cannot be used with -NoDinos, -NoDinosExceptForcedSpawn, -NoDinosExceptStreamingSpawn, or -NoDinosExceptManualSpawn. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-nodormancythrottling",
+        "description": "Required to make DormancyNetMultiplier work if its value is less than 1.0. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-noperfthreads",
+        "description": "Disables performance threads. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-nosound",
+        "description": "Disables sounds to improve performance. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-onethread",
+        "description": "Disables multithreading. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-parseservertojson",
+        "description": "Dumps the loaded server save to a JSON file in Saved/Logs/AuditLogs at startup (filename: AuditLog_%s.json, where %s is the current UTC datetime). Useful for debugging but may significantly slow startup and produce a large file on big saves. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-pauseonddos",
+        "description": "Pauses or halts the game if a DDoS attack by players is detected. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-PreventTotalConversionSaveDir",
+        "description": "Prevents total conversion mods from using a dedicated save directory, forcing use of the default save folder. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-pveallowtribewar",
+        "description": "Allows tribes to officially declare war on each other for a mutually agreed period. This is the opposite of -pvedisallowtribewar. It is suggested to use the Game.ini setting bPvEAllowTribeWar instead. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-ReloadedForBackup",
+        "description": "Marks the world-save to load as a trial backup save, preventing proper loading and continuation. Useful for testing when a full load is not required. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-ServerIP=<ipv4_address>",
+        "description": "Option found in Nitrado server setups. Expected to work in a -MULTIHOME context. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-ServerPlatform=<plat1>[+<plat2>[...]]",
+        "description": "Specifies which platforms the server will accept connections from. Options include PC (Steam), PS5, XSX, WINGDK, or ALL for crossplay between PC and consoles. With no option specified, crossplay is assumed and ALL platforms are allowed. Example: -ServerPlatform=PC or -ServerPlatform=PC+XSX+PS5. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-UnstasisDinoObstructionCheck",
+        "description": "Prevents creatures from ghosting through meshes or structures upon re-render. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-UseTameEffectivenessClamp",
+        "description": "Prevents taming effectiveness from exceeding 100%. (Undocumented by Wildcard.)"
+      },
+      {
+        "argument": "-UseServerNetSpeedCheck",
+        "description": "Prevents players from accumulating too much movement data per server tick by discarding excess data. Can also be enabled via -GUseServerNetSpeedCheck in dynamic config. Enabled on official clusters and useful for servers with high player counts and CPU load. (Undocumented by Wildcard.)"
+      }
+    ]
+  }
+  
