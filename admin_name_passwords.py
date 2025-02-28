@@ -74,7 +74,7 @@ class NamePasswordsManager:
     def create_tooltips(self):
         """Create tooltips for the UI elements with descriptions from the JSON."""
         # This is a simple implementation - in a real app, you might want a more sophisticated tooltip
-        self.server_name_entry.bind("<Enter>", lambda e: self.show_tooltip(e, "ServerName"))
+        self.server_name_entry.bind("<Enter>", lambda e: self.show_tooltip(e, "SessionName"))
         self.server_name_entry.bind("<Leave>", self.hide_tooltip)
         
         self.server_password_entry.bind("<Enter>", lambda e: self.show_tooltip(e, "ServerPassword"))
@@ -134,11 +134,20 @@ class NamePasswordsManager:
     
     def save_value_to_config(self, setting_name, value):
         """Save a value to the config manager."""
+        # Map ServerName to SessionName for server display name
+        if setting_name == "ServerName":
+            self.config_manager.set_setting("SessionName", value)
         self.config_manager.set_setting(setting_name, value)
     
     def load_values_from_config(self):
         """Load values from the config manager to the UI variables."""
-        self.server_name_var.set(self.config_manager.get_setting("ServerName"))
+        # Try to get SessionName first, fall back to ServerName if not available
+        session_name = self.config_manager.get_setting("SessionName")
+        if session_name:
+            self.server_name_var.set(session_name)
+        else:
+            self.server_name_var.set(self.config_manager.get_setting("ServerName"))
+            
         self.server_password_var.set(self.config_manager.get_setting("ServerPassword"))
         self.admin_password_var.set(self.config_manager.get_setting("AdminPassword"))
         self.spectator_password_var.set(self.config_manager.get_setting("SpectatorPassword"))
