@@ -25,7 +25,7 @@ class NamePasswordsManager:
         self.spectator_password_var = tk.StringVar()
         
         # Character count for server name
-        self.name_length_var = tk.StringVar(value="Length: 0")
+        self.name_length_var = tk.StringVar(value="Remaining: 63")
         
         # Initialize UI elements
         self.create_ui_elements()
@@ -123,12 +123,15 @@ class NamePasswordsManager:
     
     def update_name_length(self, *args):
         """Update the server name length label."""
-        length = len(self.server_name_var.get())
-        self.name_length_var.set(f"Length: {length}")
+        current_length = len(self.server_name_var.get())
+        remaining = 63 - current_length
+        self.name_length_var.set(f"Remaining: {remaining}")
         
-        # Warn if name is too long (ARK has a limit, typically around 50 characters)
-        if length > 50:
+        # Warn if name is too long (ARK has a limit of 63 characters)
+        if remaining < 0:
             self.name_length_label.configure(foreground="red")
+        elif remaining < 10:
+            self.name_length_label.configure(foreground="orange")
         else:
             self.name_length_label.configure(foreground="black")
     
