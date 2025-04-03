@@ -1,7 +1,8 @@
 import tkinter as tk
 from tkinter import ttk
 from pathlib import Path
-from configmanager import ServerManager, ServerProfile
+from configmanager import ServerManager, ServerProfile # Manages profiles
+from server_config_manager import ServerConfigManager # Manages setting details (desc, defaults)
 from Administration_section import AdminContent
 from Auto_managment import AutomaticManagement
 from Rules import RulesContent
@@ -26,15 +27,36 @@ class AdminPanel:
     def __init__(self, root):
         self.root = root
         self.root.title("Admin Panel")
-        
-        # Initialize ServerManager with config directory
+
+        # Initialize ServerManager (handles profiles)
         config_dir = Path("server_profiles")
         config_dir.mkdir(exist_ok=True)
-        self.server_manager = ServerManager(config_dir)
-        
-        # Create default profile
-        self.current_profile = self.server_manager.add_server_profile("Default")
-        
+        self.server_manager = ServerManager(config_dir) # Manages multiple ServerProfile objects
+
+        # Initialize ServerConfigManager (handles setting details like descriptions)
+        # Ensure the paths to jsons are correct relative to Main.py execution location
+        self.config_detail_manager = ServerConfigManager() # Reads jsons/ServerSettings.json etc.
+
+        # Load or create a default profile
+        profile_name = "Default"
+        if profile_name not in self.server_manager.server_profiles:
+             # If profile doesn't exist in manager, try loading from disk first
+             temp_profile = ServerProfile(profile_name, config_dir)
+             if (config_dir / f"{profile_name}.json").exists():
+                 temp_profile.load_profile()
+                 self.server_manager.server_profiles[profile_name] = temp_profile # Add loaded profile to manager
+                 self.current_profile = temp_profile
+             else:
+                 # If not on disk either, create a new one
+                 self.current_profile = self.server_manager.add_server_profile(profile_name)
+                 # self.current_profile.load_profile() # No need to load a brand new one
+        else:
+             # Profile exists in manager, get it
+             self.current_profile = self.server_manager.server_profiles[profile_name]
+             # Ensure it's loaded if accessed directly (e.g., if load_all_profiles wasn't called)
+             if not self.current_profile.game_user_settings and not self.current_profile.game_settings:
+                 self.current_profile.load_profile()
+
         # Set minimum window size
         self.root.minsize(800, 1200)
         
@@ -207,56 +229,60 @@ class AdminPanel:
                 auto_content = AutomaticManagement(self.content_area)
                 auto_content.pack(fill="both", expand=True)
             elif selection == "Rules":
-                rules_content = RulesContent(self.content_area)
+                # Pass the current profile and the detail manager to the Rules panel
+                rules_content = RulesContent(self.content_area, self.current_profile, self.config_detail_manager)
                 rules_content.pack(fill="both", expand=True)
             elif selection == "Chat and Notifications":
+                # TODO: Pass profile/config_manager if needed
                 chat_content = ChatNotificationsPanel(self.content_area)
                 chat_content.pack(fill="both", expand=True)
             elif selection == "HUD and Visuals":
                 hud_content = HUDVisualsPanel(self.content_area)
+                # TODO: Pass profile/config_manager if needed to other panels too
                 hud_content.pack(fill="both", expand=True)
             elif selection == "Player Settings":
-                player_content = PlayerSettingsPanel(self.content_area)
+                player_content = PlayerSettingsPanel(self.content_area) # Pass profile/config_manager
                 player_content.pack(fill="both", expand=True)
             elif selection == "Dino Settings":
-                dino_content = DinoSettingsPanel(self.content_area)
+                dino_content = DinoSettingsPanel(self.content_area) # Pass profile/config_manager
                 dino_content.pack(fill="both", expand=True)
             elif selection == "Environment":
-                env_content = EnvironmentPanel(self.content_area)
+                env_content = EnvironmentPanel(self.content_area) # Pass profile/config_manager
                 env_content.pack(fill="both", expand=True)
             elif selection == "Structures":
-                structures_content = StructuresPanel(self.content_area)
+                structures_content = StructuresPanel(self.content_area) # Pass profile/config_manager
                 structures_content.pack(fill="both", expand=True)
             elif selection == "Engrams":
-                engrams_content = EngramsPanel(self.content_area)
+                engrams_content = EngramsPanel(self.content_area) # Pass profile/config_manager
                 engrams_content.pack(fill="both", expand=True)
             elif selection == "Server File Details":
-                server_files_content = ServerFileDetailsPanel(self.content_area)
+                server_files_content = ServerFileDetailsPanel(self.content_area) # Pass profile/config_manager
                 server_files_content.pack(fill="both", expand=True)
             elif selection == "Custom GameUserSettings.ini Settings":
-                custom_gus_content = CustomSettingsPanel(self.content_area)
+                custom_gus_content = CustomSettingsPanel(self.content_area) # Pass profile/config_manager
                 custom_gus_content.pack(fill="both", expand=True)
             elif selection == "Custom Game.ini Settings":
-                custom_gameini_content = CustomGameINIPanel(self.content_area)
+                custom_gameini_content = CustomGameINIPanel(self.content_area) # Pass profile/config_manager
                 custom_gameini_content.pack(fill="both", expand=True)
             elif selection == "Player and Dino Level Progressions":
-                level_prog_content = LevelProgressionsPanel(self.content_area)
+                level_prog_content = LevelProgressionsPanel(self.content_area) # Pass profile/config_manager
                 level_prog_content.pack(fill="both", expand=True)
             elif selection == "Crafting Overrides":
-                crafting_content = CraftingOverridesPanel(self.content_area)
+                crafting_content = CraftingOverridesPanel(self.content_area) # Pass profile/config_manager
                 crafting_content.pack(fill="both", expand=True)
             elif selection == "Stack Size Overrides":
-                stack_size_content = StackSizeOverridesPanel(self.content_area)
+                stack_size_content = StackSizeOverridesPanel(self.content_area) # Pass profile/config_manager
                 stack_size_content.pack(fill="both", expand=True)
             elif selection == "Map Spawner Overrides":
-                map_spawner_content = MapSpawnerOverridesPanel(self.content_area)
+                map_spawner_content = MapSpawnerOverridesPanel(self.content_area) # Pass profile/config_manager
                 map_spawner_content.pack(fill="both", expand=True)
             elif selection == "Supply Crate Overrides":
-                supply_crate_content = SupplyCrateOverridesPanel(self.content_area)
+                supply_crate_content = SupplyCrateOverridesPanel(self.content_area) # Pass profile/config_manager
                 supply_crate_content.pack(fill="both", expand=True)
             elif selection == "Prevent Transfer Overrides":
-                prevent_transfer_content = PreventTransferOverridesPanel(self.content_area)
+                prevent_transfer_content = PreventTransferOverridesPanel(self.content_area) # Pass profile/config_manager
                 prevent_transfer_content.pack(fill="both", expand=True)
+            # Add other sections as needed, passing profile and config_manager
 
 class TabSystem(ttk.Frame):
     def __init__(self, parent):

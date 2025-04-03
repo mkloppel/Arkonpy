@@ -120,3 +120,16 @@ SpectatorPassword={SpectatorPassword}
                 return setting["description"]
         
         return ""
+
+    def get_setting_default(self, setting_name):
+        """Get the default value of a setting from the server settings JSON."""
+        # This requires the JSON to have a 'default' field.
+        # Adjust based on actual JSON structure.
+        if not self.server_settings or "ServerSettings" not in self.server_settings:
+            return None # Or a sensible default like "" or 0
+
+        for setting in self.server_settings["ServerSettings"]:
+            if setting.get("setting") == setting_name: # Use .get() for safety
+                return setting.get("default") # Assumes 'default' key exists
+
+        return None # Setting not found
