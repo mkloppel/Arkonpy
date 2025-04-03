@@ -334,45 +334,6 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
         frame.grid(row=0, column=0, sticky='nsew', padx=10, pady=5, ipady=5)
         frame.grid_columnconfigure(1, weight=1)
 
-        label = ttk.Label(frame, text=text)
-        label.grid(row=0, column=0, padx=5, sticky='w')
-
-        slider_var = tk.DoubleVar(value=float(default_value))
-        slider = ttk.Scale(frame, from_=0, to=100 if float_type else 1000,
-                         variable=slider_var, orient='horizontal')
-        slider.grid(row=0, column=1, padx=5, sticky='ew')
-
-        entry_var = tk.StringVar(value=str(default_value))
-        entry = ttk.Entry(frame, textvariable=entry_var, width=10)
-        entry.grid(row=0, column=2, padx=5)
-
-        if unit:
-            unit_label = ttk.Label(frame, text=unit)
-            unit_label.grid(row=0, column=3, padx=5, sticky='w')
-
-        self.slider_values[text] = (slider_var, entry_var)
-        return frame, slider, entry
-
-    def create_time_input(self, parent, text, row, column):
-        def validate_time(P):
-            if P == "":
-                return True
-            return bool(re.match(r'^([01]?[0-9]|2[0-3]):[0-5][0-9]$', P))
-        
-        label = ttk.Label(parent, text=text)
-        label.grid(row=row, column=column, padx=5, pady=2)
-        
-        vcmd = (self.register(validate_time), '%P')
-        entry = ttk.Entry(parent, width=10, validate='key', validatecommand=vcmd)
-        entry.insert(0, "00:00")
-        entry.grid(row=row, column=column + 1, padx=5, pady=2)
-        return entry
-    
-    def create_general_rules(self):
-        frame = ttk.LabelFrame(self.scrollable_frame, text="General Rules")
-        frame.grid(row=0, column=0, sticky='nsew', padx=5, pady=5)
-        frame.grid_columnconfigure(1, weight=1)
-        
         # Left column checkboxes
         left_checkboxes = [
             "Enable Hardcore Mode",
