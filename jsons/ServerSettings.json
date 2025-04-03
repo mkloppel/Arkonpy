@@ -1063,6 +1063,30 @@
       "description": "Enables character tracking. Alternatively, this can be set via the -disableCharacterTracker command line argument, which takes precedence over this setting. (Undocumented by Wildcard.)"
     },
     {
+      "setting": "MultiHome",
+      "default": "N/A",
+      "value_type": "IP_ADDRESS",
+      "description": "Specifies MultiHome IP Address. Boolean Multihome option must be set to True as well (command line or [MultiHome] section). Leave it empty if not using multihoming. Can be specified in command line too."
+    },
+    {
+      "setting": "Port",
+      "default": 7777,
+      "value_type": "integer",
+      "description": "Specifies the UDP Game Port. See Dedicated server setup. Note: command line append syntax is not supported by ARK: Survival Ascended."
+    },
+    {
+      "setting": "QueryPort",
+      "default": 27015,
+      "value_type": "integer",
+      "description": "Specifies the UDP Steam Query Port. See Dedicated server setup."
+    },
+    {
+      "setting": "SessionName",
+      "default": "ARK #123456",
+      "value_type": "string",
+      "description": "Specifies the Server name advertised in the Game Server Browser as well as in the Steam Server browser. If no name is provided, the default name will be ARK # followed by a random 6-digit number. Note: Name must not be typed between quotes unless it is launched from the command line."
+    },    
+    {
       "setting": "UseExclusiveList",
       "default": false,
       "value_type": "boolean",
