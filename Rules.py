@@ -681,10 +681,12 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
         
         # Create left column stats
         for i, stat in enumerate(left_stats):
+            pass # Placeholder for deferred implementation
             # create_stat_clamp(frame, stat, i + 1, 0) # Example if needed later
 
         # Create right column stats
         # for i, stat in enumerate(right_stats):
+            # pass # Placeholder for deferred implementation
             # create_stat_clamp(frame, stat, i + 1, 2) # Example if needed later
         ttk.Label(frame, text="Integration for Item Stat Clamps (Game.ini) is deferred.").grid(row=1, column=0, columnspan=4, pady=10)
 
