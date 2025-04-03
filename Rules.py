@@ -187,7 +187,7 @@ class RulesContent(ttk.Frame, ScrollableFrameMixin):
 
     def create_frames(self):
         # Create main scrollable container
-        self.canvas = tk.Canvas(self)
+        self.canvas = tk.Canvas(self, borderwidth=0, background="#ffffff")
         scrollbar = ttk.Scrollbar(self, orient="vertical", command=self.canvas.yview)
         self.scrollable_frame = ttk.Frame(self.canvas)
         
