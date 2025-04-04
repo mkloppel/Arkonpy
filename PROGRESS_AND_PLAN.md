@@ -32,27 +32,105 @@ You suggested a structure like this:
 
 ```python
 INI_SCHEMA = {
-    "bAllowUnlimitedRespecs": {
-        "section": "/script/shootergame.shootergamemode", # Target section in INI
-        "default": False,                          # Default value
-        "type": "bool"                             # Data type
-        # "file": "Game.ini"                       # Could explicitly add target file
-    },
     "EggHatchSpeedMultiplier": {
         "section": "/script/shootergame.shootergamemode",
+        "file": "Game.ini",
         "default": 1.0,
-        "type": "float"
-        # "file": "Game.ini"
+        "type": "float",
+        "description": "Controls how quickly eggs hatch.",
+        "category": "breeding",
+        "editable": True,
+        "profile_group": "base"
     },
-    # ... other settings ...
-    "CustomServerName": {
-        "section": "ServerSettings",                # Target section (usually implies GameUserSettings.ini)
-        "default": "My ARK Server",
-        "type": "string"
-        # "file": "GameUserSettings.ini"
+    "bAllowUnlimitedRespecs": {
+        "section": "/script/shootergame.shootergamemode",
+        "file": "Game.ini",
+        "default": False,
+        "type": "bool",
+        "description": "Allow infinite respecs without consuming Mindwipe Tonic.",
+        "category": "gameplay",
+        "editable": True,
+        "profile_group": "base"
+    },
+    "ServerPassword": {
+        "section": "ServerSettings",
+        "file": "GameUserSettings.ini",
+        "default": "",
+        "type": "string",
+        "description": "Password required to join the server.",
+        "category": "security",
+        "editable": True,
+        "profile_group": "base"
+    },
+    "Message": {
+        "section": "MessageOfTheDay",
+        "file": "GameUserSettings.ini",
+        "default": "",
+        "type": "string",
+        "description": "Sets the multi-line MOTD players see on login.",
+        "category": "meta",
+        "editable": True,
+        "profile_group": "base"
+    },
+    "MaxPlayers": {
+        "section": "/Script/Engine.GameSession",
+        "file": "GameUserSettings.ini",
+        "default": 70,
+        "type": "int",
+        "description": "Maximum concurrent players allowed.",
+        "category": "limits",
+        "editable": True,
+        "profile_group": "network"
     }
 }
+
 ```
+
+Primary Configuration Files in ARK SE (Server-Side)
+File Name	Path (relative to server root)	Purpose
+Game.ini	ShooterGame/Saved/Config/WindowsServer/Game.ini	Controls game rules, multipliers, dino behavior, engrams, etc.
+GameUserSettings.ini	ShooterGame/Saved/Config/WindowsServer/GameUserSettings.ini	Controls server-wide options like server name, difficulty, PvP/PvE mode, MOTD, and player limits.
+Engine.ini	ShooterGame/Saved/Config/WindowsServer/Engine.ini	Unreal Engine settings, typically for graphics, logging, networking behavior (rarely edited for gameplay).
+ServerSettings.json (optional/custom)	Your app or Beacon may use this for managing metadata (e.g. server profiles, GUI prefs). Not used by ARK directly.	
+
+Common Sections You’ll See in These .ini Files
+In Game.ini:
+Section	Description
+/script/shootergame.shootergamemode	Most gameplay settings go here: multipliers, dino behavior, engrams, structure limits
+/script/shootergame.shootercheatmanager	Some custom engram logic, but rarely used
+SupplyCrateOverrides	Custom loot crate definitions
+ConfigOverrideItemCraftingCosts	Custom crafting costs
+OverrideNamedEngramEntries	Unlock/disable individual engrams
+
+In GameUserSettings.ini:
+Section	Description
+ServerSettings	Most common server-level settings: difficulty, PvP, max players, etc.
+SessionSettings	Rarely used, for specific session overrides
+MessageOfTheDay	Sets MOTD (multi-line) shown to players
+[/Script/Engine.GameSession]	Handles things like MaxPlayers, but sometimes duplicated in ServerSettings
+
+In Engine.ini (rare):
+Section	Description
+[Core.System]	Paths and logging info
+[SystemSettings]	Graphics/performance tweaks
+[URL]	Network ports
+[OnlineSubsystemSteam]	Steam server integration
+[PacketHandlerComponents]	Anti-cheat and compression pipeline settings
+
+Fields Worth Adding Now (Even If You Don’t Use Them Yet)
+Field	Why You’ll Likely Want It
+file	Needed for multi-.ini export logic
+section	Required to place keys correctly
+type	Validation, GUI control type
+default	Reset function, rollback, or auto-fill
+description	Tooltip or GUI display help
+category	For UI grouping/filtering
+editable	For hiding unsafe/advanced values
+profile_group	Future profiles or clustering logic
+min / max	GUI sliders, input validation
+dependencies	Disable a setting if another is false
+priority	GUI ordering or relevance weighting
+
 
 **Purpose:**
 
