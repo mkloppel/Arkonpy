@@ -3,6 +3,7 @@ from tkinter import ttk
 from pathlib import Path
 from configmanager import ServerManager, ServerProfile # Manages profiles
 from server_config_manager import ServerConfigManager # Manages setting details (desc, defaults)
+from display_ip import get_external_ip
 from Administration_section import AdminContent
 from Auto_managment import AutomaticManagement
 from Rules import RulesContent
@@ -103,8 +104,13 @@ class AdminPanel:
         ip_frame = ttk.Frame(self.header1)
         ip_frame.grid(row=0, column=1, padx=5)
         ttk.Label(ip_frame, text="My Public IP:").pack(side=tk.LEFT)
-        ip_entry = ttk.Entry(ip_frame, width=15)
-        ip_entry.pack(side=tk.LEFT, padx=5)
+        self.ip_entry = ttk.Entry(ip_frame, width=15)
+        self.ip_entry.pack(side=tk.LEFT, padx=5)
+        # Get and display the external IP
+        external_ip = get_external_ip()
+        self.ip_entry.insert(0, external_ip)
+        # Add refresh button
+        ttk.Button(ip_frame, text="↻", width=3, command=self.refresh_ip).pack(side=tk.LEFT, padx=2)
         ttk.Button(ip_frame, text="Server Monitor").pack(side=tk.LEFT, padx=5)
         
         # Right section - Task Status
@@ -211,6 +217,12 @@ class AdminPanel:
         style.configure("TFrame", background="white")
         style.configure("TLabel", background="white")
         
+    def refresh_ip(self):
+        """Refresh the external IP display"""
+        external_ip = get_external_ip()
+        self.ip_entry.delete(0, tk.END)
+        self.ip_entry.insert(0, external_ip)
+    
     def on_select(self, event):
         if self.listbox.curselection():
             selection = self.listbox.get(self.listbox.curselection())
