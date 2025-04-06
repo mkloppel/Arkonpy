@@ -5,14 +5,14 @@ def get_external_ip():
     Get the external IP address as would be seen by services like Steam or Epic.
     
     Returns:
-        str: The external IP address or an error message if it couldn't be determined
+        str: The external IP address or "UNKNOWN" if it couldn't be determined
     """
     try:
         # Using ipify.org API to get the external IP address
         external_ip = urllib.request.urlopen('https://api.ipify.org').read().decode('utf8')
-        return external_ip
+        return external_ip if external_ip else "UNKNOWN"
     except Exception as e:
-        return f"Could not determine external IP: {str(e)}"
+        return "UNKNOWN"
 
 # This can be called at application start to refresh the IP
 def refresh_external_ip():

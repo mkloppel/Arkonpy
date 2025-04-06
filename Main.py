@@ -109,8 +109,13 @@ class AdminPanel:
         # Get and display the external IP
         external_ip = get_external_ip()
         self.ip_entry.insert(0, external_ip)
-        # Add refresh button
-        ttk.Button(ip_frame, text="↻", width=3, command=self.refresh_ip).pack(side=tk.LEFT, padx=2)
+        # Add refresh button with tooltip
+        refresh_btn = ttk.Button(ip_frame, text="↻", width=3, command=self.refresh_ip)
+        refresh_btn.pack(side=tk.LEFT, padx=2)
+        # Create tooltip for refresh button
+        self.create_tooltip(refresh_btn, "Refresh IP address")
+        # Make IP entry read-only
+        self.ip_entry.configure(state="readonly")
         ttk.Button(ip_frame, text="Server Monitor").pack(side=tk.LEFT, padx=5)
         
         # Right section - Task Status
@@ -218,10 +223,41 @@ class AdminPanel:
         style.configure("TLabel", background="white")
         
     def refresh_ip(self):
-        """Refresh the external IP display"""
-        external_ip = get_external_ip()
+        """Refresh the external IP display with visual feedback"""
+        # Clear the entry to provide visual feedback
         self.ip_entry.delete(0, tk.END)
-        self.ip_entry.insert(0, external_ip)
+        self.ip_entry.insert(0, "Refreshing...")
+        
+        # Schedule the actual refresh after a short delay for visual effect
+        def do_refresh():
+            external_ip = get_external_ip()
+            self.ip_entry.delete(0, tk.END)
+            self.ip_entry.insert(0, external_ip)
+        
+        # Wait 1 second before showing the new IP
+        self.root.after(1000, do_refresh)
+    
+    def create_tooltip(self, widget, text):
+        """Create a simple tooltip for a widget"""
+        def enter(event):
+            x, y, _, _ = widget.bbox("insert")
+            x += widget.winfo_rootx() + 25
+            y += widget.winfo_rooty() + 20
+            
+            # Create a toplevel window
+            self.tooltip = tk.Toplevel(widget)
+            self.tooltip.wm_overrideredirect(True)
+            self.tooltip.wm_geometry(f"+{x}+{y}")
+            
+            label = ttk.Label(self.tooltip, text=text, background="#ffffe0", relief="solid", borderwidth=1)
+            label.pack()
+            
+        def leave(event):
+            if hasattr(self, 'tooltip'):
+                self.tooltip.destroy()
+                
+        widget.bind("<Enter>", enter)
+        widget.bind("<Leave>", leave)
     
     def on_select(self, event):
         if self.listbox.curselection():
