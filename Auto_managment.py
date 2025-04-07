@@ -1,3 +1,15 @@
+"""
+Auto_managment.py - Server Automation Control Panel
+
+This module provides a GUI panel for configuring automatic server management tasks including:
+- Auto-start on boot
+- Scheduled shutdowns with optional updates
+- Auto-backup and auto-update settings
+- Server restart policies
+
+Used in the ARK server management application to automate routine server maintenance tasks.
+"""
+
 import tkinter as tk
 from tkinter import ttk
 from scrollable_frame import ScrollableFrameMixin
