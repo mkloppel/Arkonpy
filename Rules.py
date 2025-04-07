@@ -1,3 +1,24 @@
+"""
+Rules.py - Server Rules Configuration Panel
+
+This module provides a GUI panel for configuring server game rules including:
+- General gameplay rules (UI implemented, partially connected to INI files)
+- Download/upload restrictions (UI implemented, partially connected to INI files)
+- Tribute and cluster options (UI implemented, partially connected to INI files)
+- PvE/PvP settings (UI implemented, partially connected to INI files)
+- Tribe settings (UI implemented, partially connected to INI files)
+- Disease and network settings (UI implemented, partially connected to INI files)
+- Game mechanics multipliers (UI implemented, partially connected to INI files)
+- DLC-specific settings (Genesis, etc.) (UI implemented, partially connected to INI files)
+
+Used in the ARK server management application to configure gameplay rules and restrictions.
+
+Note on INI connections:
+- Most settings connect to GameUserSettings.ini [ServerSettings] section
+- Some advanced settings connect to Game.ini [/Script/ShooterGame.ShooterGameMode] section
+- Item stat clamps section is not yet implemented (would connect to Game.ini)
+"""
+
 import tkinter as tk
 from tkinter import ttk, BooleanVar, DoubleVar, StringVar, IntVar
 import re
