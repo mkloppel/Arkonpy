@@ -1,3 +1,31 @@
+"""
+Administration_section.py - Server Administration Control Panel
+
+This module provides a GUI panel for configuring server administration settings including:
+- Server name and passwords (UI implemented, connected to INI files)
+- Networking configuration (UI implemented, not connected to INI files)
+- Maps and mods selection (UI implemented, not connected to INI files)
+- Save settings (UI implemented, not connected to INI files)
+- Message of the Day (MOTD) (UI implemented, not connected to INI files)
+- Server options (UI implemented, not connected to INI files)
+- Server log configuration (UI implemented, not connected to INI files)
+- Branch details (UI implemented, not connected to INI files)
+- Command line arguments (UI implemented, not connected to INI files)
+
+Used in the ARK server management application to configure core server administration settings.
+
+Note on INI connections:
+- Name and Passwords: Connected to GameUserSettings.ini
+- Networking: Not connected to INI files
+- Maps and Mods: Not connected to INI files
+- Saves: Not connected to INI files
+- MOTD: Not connected to INI files
+- Server Options: Not connected to INI files
+- Server Log: Not connected to INI files
+- Branch Details: Not connected to INI files
+- Command Line: Not connected to INI files (affects batch file generation)
+"""
+
 import tkinter as tk
 from tkinter import ttk
 from scrollable_frame import ScrollableFrameMixin
