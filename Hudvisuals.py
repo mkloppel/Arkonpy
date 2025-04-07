@@ -1,3 +1,20 @@
+"""
+Hudvisuals.py - HUD and Visual Settings Configuration Panel
+
+This module provides a GUI panel for configuring server HUD and visual settings including:
+- Basic HUD options (UI implemented, not connected to INI files)
+- View options (UI implemented, not connected to INI files)
+- Gamma settings (UI implemented, not connected to INI files)
+
+Used in the ARK server management application to configure visual elements of the game
+that players can access on the server.
+
+Note on INI connections:
+- HUD options: Not connected to INI files (would connect to Game.ini)
+- View options: Not connected to INI files (would connect to Game.ini)
+- Gamma settings: Not connected to INI files (would connect to Game.ini)
+"""
+
 import tkinter as tk
 from tkinter import ttk
 from scrollable_frame import ScrollableFrameMixin
