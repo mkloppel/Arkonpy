@@ -2,12 +2,19 @@
 Auto_managment.py - Server Automation Control Panel
 
 This module provides a GUI panel for configuring automatic server management tasks including:
-- Auto-start on boot
-- Scheduled shutdowns with optional updates
-- Auto-backup and auto-update settings
-- Server restart policies
+- Auto-start on boot (UI implemented, functionality not connected)
+- Scheduled shutdowns with optional updates (UI implemented, functionality not connected)
+- Auto-backup and auto-update settings (UI implemented, functionality not connected)
+- Server restart policies (UI implemented, functionality not connected)
 
 Used in the ARK server management application to automate routine server maintenance tasks.
+
+Note on INI connections:
+- Auto-start: Not applicable to server INI files (OS-level functionality)
+- Scheduled shutdowns: Not connected to INI files (requires external scheduler)
+- Auto-backup: Not connected to INI files (requires external backup system)
+- Auto-update: Not connected to INI files (requires Steam CMD integration)
+- Server restart: Not connected to INI files (requires process monitoring)
 """
 
 import tkinter as tk
